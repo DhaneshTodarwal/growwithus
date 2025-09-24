@@ -3,7 +3,7 @@ import { getAllPosts } from '../../lib/mdx'
 import Reveal from '../../components/Reveal'
 
 export const metadata = {
-  title: 'Blog | Grow-Withup',
+  title: 'Blog | Growwithus',
   description: 'Latest insights on AI, apps, and web technology.'
 }
 

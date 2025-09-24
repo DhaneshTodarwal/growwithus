@@ -1,8 +1,8 @@
 export const siteConfig = {
-  name: 'Growwithus',
+  name: 'Grow-Withus',
   tagline: 'Web, Apps & AI Agents',
   description:
-    'Growwithus builds premium web & app experiences and custom AI agents for startups, SMBs, and mid-market enterprises.',
+    'Grow-Withus builds premium web & app experiences and custom AI agents for startups, SMBs, and mid-market enterprises.',
   url: process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000',
   twitter: '@TodarwalDhanesh',
   // Optional logo config.
@@ -13,7 +13,7 @@ export const siteConfig = {
     dark: '',
     width: 44,
     height: 44,
-    alt: 'Growwithus logo',
+    alt: 'Grow-Withus logo',
   },
 }
 

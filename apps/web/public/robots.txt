@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+# Update this to your deployed domain when going live
+Sitemap: http://localhost:3000/sitemap.xml

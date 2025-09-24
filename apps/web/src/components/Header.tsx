@@ -30,7 +30,7 @@ export default function Header() {
                 alt={siteConfig.logo.alt || `${siteConfig.name} logo`}
                 width={siteConfig.logo.width || 40}
                 height={siteConfig.logo.height || 40}
-                className={`h-10 w-10 rounded-md object-contain block ${siteConfig.logo.dark ? 'dark:hidden' : ''}`}
+                className={`h-12 w-12 rounded-md object-contain object-center block ${siteConfig.logo.dark ? 'dark:hidden' : ''}`}
                 priority
               />
               {/* Dark theme logo (optional) */}
@@ -40,7 +40,7 @@ export default function Header() {
                   alt={siteConfig.logo.alt || `${siteConfig.name} logo`}
                   width={siteConfig.logo.width || 40}
                   height={siteConfig.logo.height || 40}
-                  className="h-10 w-10 rounded-md object-contain hidden dark:block"
+                  className="h-12 w-12 rounded-md object-contain object-center hidden dark:block"
                   priority
                 />
               )}

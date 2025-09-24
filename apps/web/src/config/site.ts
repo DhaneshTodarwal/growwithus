@@ -11,8 +11,8 @@ export const siteConfig = {
   logo: {
     light: '/images/logo.jpeg',
     dark: '',
-    width: 44,
-    height: 44,
+    width: 60,
+    height: 60,
     alt: 'Grow-Withus logo',
   },
 }

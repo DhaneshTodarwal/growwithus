@@ -1,4 +1,4 @@
-'use client'
+"use client"
 import { siteConfig } from '../config/site'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
@@ -27,13 +27,11 @@ export default function HomePage() {
       >
         <HeroBackground />
         <FoundersBackground />
-        
         {/* Animated Background Elements */}
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-20 left-10 w-72 h-72 bg-accent-primary/10 rounded-full blur-3xl animate-pulse"></div>
           <div className="absolute bottom-20 right-10 w-96 h-96 bg-accent-secondary/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
         </div>
-        
         <div className="z-10 max-w-6xl mx-auto">
           {/* Enhanced Main Heading */}
           <motion.div
@@ -62,7 +60,6 @@ export default function HomePage() {
               Craft Your Digital Future Today
             </motion.h2>
           </motion.div>
-          
           <motion.p
             className="subheading mt-6 max-w-4xl mx-auto text-xl md:text-2xl leading-relaxed text-text-secondary"
             initial={{ opacity: 0, y: 30 }}
@@ -72,8 +69,7 @@ export default function HomePage() {
           >
             Web, Apps, and Custom AI Agents for startups, SMBs, and mid‑market enterprises.
           </motion.p>
-          
-          {/* Why Choose Section */}
+          {/* Why Choose Section (revamped with icons + reveals) */}
           <motion.div
             className="mt-12"
             initial={{ opacity: 0, y: 40 }}
@@ -123,7 +119,7 @@ export default function HomePage() {
               </Reveal>
             </div>
 
-            {/* Mini Process Timeline */}
+            {/* Mini Process Timeline to fill space and add interest */}
             <div className="mt-10">
               <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
                 <Reveal delay={0}>
@@ -164,7 +160,7 @@ export default function HomePage() {
                 </Reveal>
               </div>
             </div>
-          </motion.div>
+          </div>
 
           {/* Professional CTA Buttons */}
           <div className="mt-10 flex flex-col sm:flex-row gap-6 justify-center items-center">
@@ -205,11 +201,11 @@ export default function HomePage() {
               </svg>
               <span className="font-medium">🕐 24/7 Support</span>
             </div>
-          </div>
+          </motion.div>
         </div>
       </motion.section>
 
-      {/* SERVICES SECTION */}
+      {/* ENHANCED SERVICES SECTION */}
       <section id="services" className="py-14 md:py-20 max-w-7xl mx-auto px-8 relative">
         {/* Professional Background Elements */}
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-accent-primary/3 to-transparent opacity-50"></div>
@@ -260,37 +256,127 @@ export default function HomePage() {
                 badge="AI Powered"
               />
             </Reveal>
+            <Reveal delay={360}>
+              <ServiceCard
+                href="/services/seo-optimization"
+                icon={<LineChart size={32} />}
+                title="SEO Optimization"
+                description="Technical SEO, Core Web Vitals, on‑page best practices, and content strategy to rank and convert."
+                gradient="bg-gradient-to-br from-amber-500 to-orange-400"
+                badge="Growth"
+              />
+            </Reveal>
+            <Reveal delay={480}>
+              <ServiceCard
+                href="/services/brand-identity"
+                icon={<Palette size={32} />}
+                title="Brand Identity & Logo"
+                description="Logo systems, typography, color palettes, and brand guidelines for a consistent, memorable presence."
+                gradient="bg-gradient-to-br from-rose-500 to-fuchsia-400"
+                badge="Design"
+              />
+            </Reveal>
+            <Reveal delay={600}>
+              <ServiceCard
+                href="/services/sem-ads"
+                icon={<BarChart3 size={32} />}
+                title="SEM & Performance Ads"
+                description="Google Ads, Meta Ads, and analytics setup to drive qualified traffic and measurable ROI."
+                gradient="bg-gradient-to-br from-sky-500 to-indigo-400"
+                badge="Paid Growth"
+              />
+            </Reveal>
+          </div>
+          
+          {/* Case Studies Spotlight (replaces duplicate CTA) */}
+          <div className="mt-6">
+            <div className="text-center max-w-3xl mx-auto">
+              <Reveal delay={0}>
+                <h3 className="text-2xl md:text-3xl font-bold text-text-primary">Case Studies Spotlight</h3>
+              </Reveal>
+              <Reveal delay={100}>
+                <p className="text-text-secondary mt-2">Real results from real clients—here’s a peek at what we’ve shipped recently.</p>
+              </Reveal>
+            </div>
+            <div className="grid md:grid-cols-3 gap-6 mt-8">
+              <Reveal delay={0}>
+                <div className="card hover:-translate-y-1 transition-transform">
+                  <div className="flex items-center gap-3 mb-2">
+                    <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-[var(--accent-primary)] to-[var(--accent-secondary)] text-white flex items-center justify-center">
+                      <TrendingUp className="w-5 h-5" />
+                    </div>
+                    <div className="font-semibold text-text-primary">E‑commerce Growth</div>
+                  </div>
+                  <p className="text-sm text-text-secondary">35% conversion lift and 60% faster load times after a headless revamp.</p>
+                </div>
+              </Reveal>
+              <Reveal delay={120}>
+                <div className="card hover:-translate-y-1 transition-transform">
+                  <div className="flex items-center gap-3 mb-2">
+                    <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-[var(--accent-primary)] to-[var(--accent-secondary)] text-white flex items-center justify-center">
+                      <Gauge className="w-5 h-5" />
+                    </div>
+                    <div className="font-semibold text-text-primary">SaaS Performance</div>
+                  </div>
+                  <p className="text-sm text-text-secondary">70% reduction in ticket resolution time with AI‑assisted workflows.</p>
+                </div>
+              </Reveal>
+              <Reveal delay={240}>
+                <div className="card hover:-translate-y-1 transition-transform">
+                  <div className="flex items-center gap-3 mb-2">
+                    <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-[var(--accent-primary)] to-[var(--accent-secondary)] text-white flex items-center justify-center">
+                      <Award className="w-5 h-5" />
+                    </div>
+                    <div className="font-semibold text-text-primary">Fintech Reliability</div>
+                  </div>
+                  <p className="text-sm text-text-secondary">99.95% uptime and secure onboarding at scale across regions.</p>
+                </div>
+              </Reveal>
+            </div>
+            <div className="mt-8 flex justify-center">
+              <Reveal delay={100}>
+                <a href="/case-studies" className="btn btn-primary group">
+                  See Case Studies
+                  <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
+                </a>
+              </Reveal>
+            </div>
           </div>
         </div>
       </section>
 
       <ProcessSection />
+
       <StatsSection />
+
       <TechStackSection />
+
       <Testimonials />
 
+      {/* Compact divider to reduce excess whitespace */}
       <div className="mx-auto max-w-7xl px-6 my-6 md:my-8">
         <div className="h-px bg-gradient-to-r from-accent-primary/30 via-accent-secondary/30 to-accent-primary/30" />
       </div>
 
-      <section className="max-w-6xl mx-auto px-6 py-6 md:py-8">
+  {/* Replaced duplicate "Why choose" block with a concise CTA band to keep momentum */}
+  <section className="max-w-6xl mx-auto px-6 py-6 md:py-8">
         <Reveal delay={0}>
           <div className="bg-gradient-to-r from-[var(--accent-primary)]/10 to-[var(--accent-secondary)]/10 border border-glassmorphism-border rounded-2xl p-6 md:p-7 text-center">
-            <h3 className="text-xl md:text-2xl font-semibold text-text-primary mb-2">Have a project in mind?</h3>
-            <p className="text-text-secondary mb-6">We'll share a tailored plan and timeline within 48 hours.</p>
-            <a href="/contact" className="btn btn-primary">Get a proposal</a>
+          <h3 className="text-xl md:text-2xl font-semibold text-text-primary mb-2">Have a project in mind?</h3>
+          <p className="text-text-secondary mb-6">We’ll share a tailored plan and timeline within 48 hours.</p>
+          <a href="/contact" className="btn btn-primary">Get a proposal</a>
           </div>
         </Reveal>
       </section>
 
-      <div className="my-6 md:my-8"></div>
-      <FAQSection />
+  <div className="my-6 md:my-8"></div>
+  <FAQSection />
 
-      <div className="my-6 md:my-8"></div>
-      <BlogSection />
+  <div className="my-6 md:my-8"></div>
+  <BlogSection />
 
-      <div className="my-6 md:my-8"></div>
-      <NewsletterSection />
+  <div className="my-6 md:my-8"></div>
+  <NewsletterSection />
 
       <Reveal delay={120}>
         <CtaBand />

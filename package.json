@@ -11,7 +11,8 @@
     "dev": "concurrently -n web,api -c green,blue \"npm --workspace apps/web run dev\" \"npm --workspace apps/api run dev\"",
     "build": "npm --workspace apps/web run build && (npm --workspace apps/api run build || true)",
     "lint": "npm --workspace apps/web run lint || true",
-    "test": "echo 'no tests yet'"
+    "test": "echo 'no tests yet'",
+    "deploy:web": "npm --workspace apps/web run build && cd apps/web && npx vercel --prod --name growwithus || true"
   },
   "devDependencies": {
     "concurrently": "8.2.2"

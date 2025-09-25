@@ -29,3 +29,4 @@ cms/public/uploads/
 # Docker
 *.pid
 *.seed
+.vercel

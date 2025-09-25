@@ -2,9 +2,10 @@ import Image from 'next/image'
 import TiltCard from './TiltCard'
 // Local image downloaded by the user (root-level /images)
 // Using a static import ensures Next bundles and serves this image correctly
-import aiNews from '../../../../images/AI-news.webp'
-import webDevImg from '../../../../images/Web-devlopment.avif'
-import businessStrategyImg from '../../../../images/business-strategy.avif'
+// Moved images into public/images so we can reference them by path string
+const aiNews = '/images/AI-news.webp'
+const webDevImg = '/images/Web-devlopment.avif'
+const businessStrategyImg = '/images/business-strategy.avif'
 
 export default function BlogSection() {
   const blogPosts = [

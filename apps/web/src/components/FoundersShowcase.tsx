@@ -3,8 +3,8 @@ import { siteConfig } from '../config/site'
 import Image from 'next/image'
 import { useEffect, useRef, useState } from 'react'
 
-import founder1 from '../../../../images/dhanesh.jpeg'
-import founder2 from '../../../../images/eshwar.jpeg'
+const founder1 = '/images/founders/dhanesh.jpeg'
+const founder2 = '/images/founders/eshwar.jpeg'
 
 const slides = [
   { name: 'Dhanesh Todarwal', role: 'Co‑Founder', image: founder1 },

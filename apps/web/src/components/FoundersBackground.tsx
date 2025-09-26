@@ -11,26 +11,26 @@ interface Founder {
 }
 
 const founders: Founder[] = [
-  { 
-    name: 'Alex Chen', 
-    role: 'Founder & CEO', 
-    image: '/founders/alex.jpg',
-    bio: 'Visionary leader with 10+ years in full-stack development and AI strategy. Previously led engineering teams at Fortune 500 companies.',
-    expertise: ['Full-Stack Development', 'AI Strategy', 'Team Leadership', 'Product Vision']
+  {
+    name: 'Dhanesh Todarwal',
+    role: 'Co‑Founder, Grow‑Withus',
+    image: '/images/founders/dhanesh.jpeg',
+    bio: 'Data Analytics graduate with B.Com and M.Com. Founder of Grow‑Withus and an active stock market trader. Blends analytical rigor with practical business execution to turn ideas into measurable outcomes.',
+    expertise: ['Data Analytics', 'Business Strategy', 'Web & App Delivery', 'Stock Market Trading']
   },
-  { 
-    name: 'Sarah Johnson', 
-    role: 'Co‑Founder & Design Lead', 
-    image: '/founders/sarah.jpg',
-    bio: 'Award-winning designer passionate about creating user-centered experiences that drive business results. Former design lead at top agencies.',
-    expertise: ['UI/UX Design', 'Brand Strategy', 'Design Systems', 'User Research']
+  {
+    name: 'Ishwar Hiran',
+    role: 'Co‑Founder, Grow‑Withus',
+    image: '/images/founders/eshwar.jpeg',
+    bio: 'BCA (Bachelor of Computer Applications). Co‑founder of Grow‑Withus and a specialist in Marketing and SEO. Market researcher focused on growth strategies, visibility, and conversion.',
+    expertise: ['Marketing', 'SEO Optimization', 'Market Research', 'Growth Strategy']
   },
-  { 
-    name: 'Michael Rodriguez', 
-    role: 'Co‑Founder & AI Lead', 
-    image: '/founders/michael.jpg',
-    bio: 'PhD in Computer Science specializing in machine learning and natural language processing. Published researcher and AI consultant.',
-    expertise: ['Machine Learning', 'NLP', 'AI Architecture', 'Research & Development']
+  {
+    name: 'Yogesh Todarwal',
+    role: 'Advisor',
+    image: '/images/founders/yogesh-placeholder.jpg',
+    bio: 'Advisor to Grow‑Withus. Education: IIT Bombay; PhD (Stockholm, Sweden). Currently a Post‑Doc researcher. Provides guidance in career counseling, stock market strategy, and business mindset.',
+    expertise: ['Academic Research', 'Career Guidance', 'Stock Market', 'Business Strategy']
   }
 ]
 

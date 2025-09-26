@@ -5,52 +5,31 @@ import FoundersShowcase from '../../components/FoundersShowcase'
 export default function About() {
   const founders = [
     {
-      name: 'Alex Chen',
-      role: 'Co‑Founder & CEO',
+      name: 'Dhanesh Todarwal',
+      role: 'Co‑Founder, Grow‑Withus',
       bio:
-        `Engineer-turned-strategist focused on shipping products that grow revenue. Leads strategy, product, and partnerships at ${siteConfig.name}.`,
-      image: '/team/alex.jpg', // place file at apps/web/public/team/alex.jpg
-      location: 'Pune, IN',
-      links: [{ label: 'LinkedIn', href: 'https://www.linkedin.com/' }],
+        'Data Analytics graduate with B.Com and M.Com. Founder of Grow‑Withus and an active stock market trader. Blends analytics with business strategy to deliver real outcomes.',
+      image: '/images/founders/dhanesh.jpeg',
+      location: 'India',
+      links: [],
     },
     {
-      name: 'Sarah Johnson',
-      role: 'Co‑Founder & Design Lead',
+      name: 'Ishwar Hiran',
+      role: 'Co‑Founder, Grow‑Withus',
       bio:
-        'Award-winning designer crafting usable, beautiful systems. Owns brand, UX, and design operations.',
-      image: '/team/sarah.jpg', // place file at apps/web/public/team/sarah.jpg
-      location: 'Bengaluru, IN',
-      links: [{ label: 'LinkedIn', href: 'https://www.linkedin.com/' }],
+        'BCA graduate, specialist in Marketing and SEO, and market researcher. Focused on visibility, growth, and ROI across campaigns.',
+      image: '/images/founders/eshwar.jpeg',
+      location: 'India',
+      links: [],
     },
   ]
   const team = [
     {
-      name: "Alex Chen",
-      role: "Founder & CEO",
-      expertise: "Full-Stack Development, AI Strategy",
-      description: "10+ years building scalable web applications and leading development teams. Passionate about emerging AI technologies.",
-      image: "/team/alex.jpg"
-    },
-    {
-      name: "Sarah Johnson", 
-      role: "Lead Designer",
-      expertise: "UI/UX Design, Brand Strategy",
-      description: "Award-winning designer with expertise in creating user-centered digital experiences that drive business results.",
-      image: "/team/sarah.jpg"
-    },
-    {
-      name: "Michael Rodriguez",
-      role: "AI Engineer", 
-      expertise: "Machine Learning, Natural Language Processing",
-      description: "PhD in Computer Science, specializing in developing intelligent systems and conversational AI applications.",
-      image: "/team/michael.jpg"
-    },
-    {
-      name: "Emily Park",
-      role: "Project Manager",
-      expertise: "Agile Methodologies, Client Relations", 
-      description: "Ensures every project runs smoothly and exceeds client expectations through clear communication and strategic planning.",
-      image: "/team/emily.jpg"
+      name: 'Yogesh Todarwal',
+      role: 'Advisor',
+      expertise: 'Academic Research, Career Guidance, Stock Market, Business Strategy',
+      description: 'IIT Bombay alumnus; PhD (Stockholm, Sweden); currently Post‑Doc. Advisor to Grow‑Withus for guidance, career counseling, stock market strategy, and business mindset.',
+      image: '/images/founders/yogesh-placeholder.jpg'
     }
   ]
 

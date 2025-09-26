@@ -4,7 +4,7 @@ import Image from 'next/image'
 import { useEffect, useRef, useState } from 'react'
 
 const founder1 = '/images/founders/dhanesh.jpeg'
-const founder2 = '/images/founders/eshwar.jpeg'
+const founder2 = '/images/founders/ishwar.jpeg'
 
 const slides = [
   { name: 'Dhanesh Todarwal', role: 'Co‑Founder', image: founder1 },
@@ -66,7 +66,7 @@ export default function FoundersShowcase() {
                 alt={`${s.name} portrait`}
                 fill
                 sizes="(max-width: 768px) 100vw, 50vw"
-                className="object-cover"
+                className="object-contain object-center bg-black/5 dark:bg-white/5"
                 priority={i === 0}
               />
 

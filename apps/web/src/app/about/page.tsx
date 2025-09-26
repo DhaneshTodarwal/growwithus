@@ -8,7 +8,7 @@ export default function About() {
       name: 'Dhanesh Todarwal',
       role: 'Co‑Founder, Grow‑Withus',
       bio:
-        'Data Analytics graduate with B.Com and M.Com. Founder of Grow‑Withus and an active stock market trader. Blends analytics with business strategy to deliver real outcomes.',
+        'Dhanesh is a skilled developer and stock market analyst known for building powerful apps and websites. He designs and tests trading strategies, blending tech expertise with sharp market insights for actionable results.',
       image: '/images/founders/dhanesh.jpeg',
       location: 'India',
       links: [],
@@ -17,8 +17,8 @@ export default function About() {
       name: 'Ishwar Hiran',
       role: 'Co‑Founder, Grow‑Withus',
       bio:
-        'BCA graduate, specialist in Marketing and SEO, and market researcher. Focused on visibility, growth, and ROI across campaigns.',
-      image: '/images/founders/eshwar.jpeg',
+        'Expert in marketing and SEO, Ishwar specializes in boosting brand visibility and driving growth through data‑driven strategies. His deep market research skills help deliver smart solutions for business expansion.',
+  image: '/images/founders/ishwar.jpeg',
       location: 'India',
       links: [],
     },
@@ -27,9 +27,9 @@ export default function About() {
     {
       name: 'Yogesh Todarwal',
       role: 'Advisor',
-      expertise: 'Academic Research, Career Guidance, Stock Market, Business Strategy',
-      description: 'IIT Bombay alumnus; PhD (Stockholm, Sweden); currently Post‑Doc. Advisor to Grow‑Withus for guidance, career counseling, stock market strategy, and business mindset.',
-      image: '/images/founders/yogesh-placeholder.jpg'
+  expertise: 'Research, Career Guidance, Stock Market, Business Strategy',
+  description: 'Yogesh brings academic excellence and research expertise from IIT Bombay and a PhD in Sweden. He guides in career planning, stock market strategies, and business growth, helping shape vision and deliver success.',
+  image: '/images/founders/yogesh.jpeg'
     }
   ]
 

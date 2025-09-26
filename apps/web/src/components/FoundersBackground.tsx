@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useState, useCallback } from 'react'
 import Image from 'next/image'
+import { founders as foundersList } from '../data/founders'
 
 interface Founder {
   name: string;
@@ -10,29 +11,8 @@ interface Founder {
   expertise: string[];
 }
 
-const founders: Founder[] = [
-  {
-    name: 'Dhanesh Todarwal',
-    role: 'Co‑Founder, Grow‑Withus',
-    image: '/images/founders/dhanesh.jpeg',
-    bio: 'Data Analytics graduate with B.Com and M.Com. Founder of Grow‑Withus and an active stock market trader. Blends analytical rigor with practical business execution to turn ideas into measurable outcomes.',
-    expertise: ['Data Analytics', 'Business Strategy', 'Web & App Delivery', 'Stock Market Trading']
-  },
-  {
-    name: 'Ishwar Hiran',
-    role: 'Co‑Founder, Grow‑Withus',
-    image: '/images/founders/eshwar.jpeg',
-    bio: 'BCA (Bachelor of Computer Applications). Co‑founder of Grow‑Withus and a specialist in Marketing and SEO. Market researcher focused on growth strategies, visibility, and conversion.',
-    expertise: ['Marketing', 'SEO Optimization', 'Market Research', 'Growth Strategy']
-  },
-  {
-    name: 'Yogesh Todarwal',
-    role: 'Advisor',
-    image: '/images/founders/yogesh-placeholder.jpg',
-    bio: 'Advisor to Grow‑Withus. Education: IIT Bombay; PhD (Stockholm, Sweden). Currently a Post‑Doc researcher. Provides guidance in career counseling, stock market strategy, and business mindset.',
-    expertise: ['Academic Research', 'Career Guidance', 'Stock Market', 'Business Strategy']
-  }
-]
+// Only rotate through founders (exclude advisors)
+const founders: Founder[] = foundersList
 
 // Enhanced with accessibility, performance, and modal integration
 export default function FoundersBackground() {
@@ -41,6 +21,7 @@ export default function FoundersBackground() {
   const [isPaused, setIsPaused] = useState(false)
   const [showModal, setShowModal] = useState(false)
   const [selectedFounder, setSelectedFounder] = useState<Founder | null>(null)
+  const [mounted, setMounted] = useState(false)
 
   // Respect reduced motion preference
   const prefersReducedMotion = typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches
@@ -58,6 +39,11 @@ export default function FoundersBackground() {
     return () => clearInterval(id)
   }, [nextSlide, prefersReducedMotion])
 
+  // Prevent initial flash by rendering background only after mount
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
   const openModal = (founder: Founder) => {
     setSelectedFounder(founder)
     setShowModal(true)
@@ -72,6 +58,7 @@ export default function FoundersBackground() {
 
   return (
     <>
+      {mounted && (
       <div 
         aria-hidden="true" 
         className="pointer-events-none absolute inset-0 -z-10 overflow-hidden"
@@ -90,10 +77,8 @@ export default function FoundersBackground() {
                   src={founder.image}
                   alt={`${founder.name}, ${founder.role}`}
                   fill
-                  className="object-cover"
+                  className="object-cover object-top"
                   sizes="(max-width: 768px) 70vw, 420px"
-                  placeholder="blur"
-                  blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyLli+JCmk44WQ4xX0DJIVkREknZJjRHsB9/9k="
                 />
                 <div className="absolute inset-0 bg-gradient-to-b from-black/35 to-black/55" />
                 <div className="absolute bottom-4 left-4 right-4 text-white/90 text-sm tracking-wide font-medium">
@@ -108,6 +93,7 @@ export default function FoundersBackground() {
         {/* Decorative radial vignette to soften edges */}
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.35)_0%,rgba(255,255,255,0)_60%)] dark:bg-[radial-gradient(circle_at_center,rgba(0,0,0,0.4)_0%,rgba(0,0,0,0)_65%)]" />
       </div>
+      )}
 
       {/* Founders Info Pill Button */}
       <div className="absolute bottom-8 right-8 z-20 pointer-events-auto">

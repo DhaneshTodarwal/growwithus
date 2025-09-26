@@ -9,6 +9,7 @@
   ],
   "scripts": {
     "dev": "concurrently -n web,api -c green,blue \"npm --workspace apps/web run dev\" \"npm --workspace apps/api run dev\"",
+    "dev:lan": "npm --workspace apps/web run dev:lan",
     "build": "npm --workspace apps/web run build && (npm --workspace apps/api run build || true)",
     "lint": "npm --workspace apps/web run lint || true",
     "test": "echo 'no tests yet'",

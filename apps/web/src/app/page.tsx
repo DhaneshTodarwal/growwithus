@@ -5,6 +5,7 @@ import Image from 'next/image'
 import CtaBand from '../components/CtaBand'
 import HeroBackground from '../components/HeroBackground'
 import FoundersBackground from '../components/FoundersBackground'
+import FoundersSection from '../components/FoundersSection'
 import Testimonials from '../components/Testimonials'
 import ProcessSection from '../components/ProcessSection'
 import StatsSection from '../components/StatsSection'
@@ -20,7 +21,7 @@ export default function HomePage() {
   return (
     <>
       <motion.section
-        className="hero relative min-h-[70vh] md:min-h-[75vh] flex flex-col items-center justify-center text-center px-8 pt-8 pb-10 md:pb-12 overflow-hidden"
+        className="hero relative min-h-[56vh] sm:min-h-[62vh] md:min-h-[72vh] flex flex-col items-center justify-center text-center px-6 pt-6 pb-8 md:pb-12 overflow-hidden"
         initial={{ opacity: 0, scale: 0.98 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.8, ease: 'easeOut' }}
@@ -30,8 +31,8 @@ export default function HomePage() {
         
         {/* Animated Background Elements */}
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-20 left-10 w-72 h-72 bg-accent-primary/10 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-20 right-10 w-96 h-96 bg-accent-secondary/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
+          <div className="absolute top-24 left-6 hidden md:block w-72 h-72 bg-accent-primary/10 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-24 right-6 hidden md:block w-96 h-96 bg-accent-secondary/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
         </div>
         
         <div className="z-10 max-w-6xl mx-auto">
@@ -75,7 +76,7 @@ export default function HomePage() {
           
           {/* Why Choose Section */}
           <motion.div
-            className="mt-12"
+            className="mt-12 hidden md:block"
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.7 }}
@@ -262,14 +263,15 @@ export default function HomePage() {
             </Reveal>
           </div>
         </div>
-      </section>
+  </section>
 
-      <ProcessSection />
+  <ProcessSection />
+  <FoundersSection />
       <StatsSection />
       <TechStackSection />
       <Testimonials />
 
-      <div className="mx-auto max-w-7xl px-6 my-6 md:my-8">
+      <div className="mx-auto max-w-7xl px-6 my-6 md:my-8 hidden md:block">
         <div className="h-px bg-gradient-to-r from-accent-primary/30 via-accent-secondary/30 to-accent-primary/30" />
       </div>
 

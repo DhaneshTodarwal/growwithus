@@ -67,6 +67,7 @@ export default function Header() {
             <Link href="/ai-demos" className="nav-link">AI Demos</Link>
             <Link href="/pricing" className="nav-link">Pricing</Link>
             <Link href="/about" className="nav-link">About</Link>
+            <Link href="/#founders" className="nav-link">Founders</Link>
             <Link href="/blog" className="nav-link">Blog</Link>
             <Link href="/careers" className="nav-link">Careers</Link>
             <Link href="/contact" className="nav-link-cta">Contact</Link>
@@ -97,6 +98,7 @@ export default function Header() {
             <Link href="/ai-demos" onClick={() => setOpen(false)} className="mobile-nav-link">AI Demos</Link>
             <Link href="/pricing" onClick={() => setOpen(false)} className="mobile-nav-link">Pricing</Link>
             <Link href="/about" onClick={() => setOpen(false)} className="mobile-nav-link">About</Link>
+            <Link href="/#founders" onClick={() => setOpen(false)} className="mobile-nav-link">Founders</Link>
             <Link href="/blog" onClick={() => setOpen(false)} className="mobile-nav-link">Blog</Link>
             <Link href="/careers" onClick={() => setOpen(false)} className="mobile-nav-link">Careers</Link>
             <Link href="/contact" onClick={() => setOpen(false)} className="mobile-nav-link-cta">Contact Us</Link>

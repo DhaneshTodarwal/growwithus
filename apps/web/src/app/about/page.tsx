@@ -1,8 +1,12 @@
+'use client'
 import { siteConfig } from '../../config/site'
 import Image from 'next/image'
 import FoundersShowcase from '../../components/FoundersShowcase'
+import { useState } from 'react'
 
 export default function About() {
+  const [showAdvisorModal, setShowAdvisorModal] = useState(false)
+  
   const founders = [
     {
       name: 'Dhanesh Todarwal',
@@ -108,6 +112,153 @@ export default function About() {
 
       <div className="section-divider"></div>
 
+      {/* Achievements & Milestones */}
+      <section className="py-20 bg-gradient-to-br from-accent-primary/5 to-accent-secondary/5">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="mb-4">Our Track Record</h2>
+            <p className="subheading max-w-2xl mx-auto">
+              Numbers that speak to our commitment and success in delivering exceptional results.
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-4 gap-8">
+            <div className="text-center">
+              <div className="text-5xl font-bold gradient-text mb-2">150+</div>
+              <div className="text-lg font-semibold mb-1">Projects Delivered</div>
+              <p className="text-sm opacity-75">Across web, mobile, and AI</p>
+            </div>
+            <div className="text-center">
+              <div className="text-5xl font-bold gradient-text mb-2">98%</div>
+              <div className="text-lg font-semibold mb-1">Client Satisfaction</div>
+              <p className="text-sm opacity-75">Rated 4.9/5 average</p>
+            </div>
+            <div className="text-center">
+              <div className="text-5xl font-bold gradient-text mb-2">6+</div>
+              <div className="text-lg font-semibold mb-1">Years Experience</div>
+              <p className="text-sm opacity-75">Since 2019</p>
+            </div>
+            <div className="text-center">
+              <div className="text-5xl font-bold gradient-text mb-2">24/7</div>
+              <div className="text-lg font-semibold mb-1">Support Available</div>
+              <p className="text-sm opacity-75">Always here to help</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div className="section-divider"></div>
+
+      {/* Technology Expertise */}
+      <section className="py-20">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="mb-4">Our Technology Stack</h2>
+            <p className="subheading max-w-2xl mx-auto">
+              We work with cutting-edge technologies to build future-proof solutions.
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="card">
+              <h3 className="text-xl font-semibold mb-4 flex items-center gap-2">
+                <span className="text-2xl">💻</span>
+                Frontend Development
+              </h3>
+              <div className="flex flex-wrap gap-2">
+                <span className="px-3 py-1 bg-blue-500/10 text-blue-600 dark:text-blue-400 rounded-full text-sm">React</span>
+                <span className="px-3 py-1 bg-blue-500/10 text-blue-600 dark:text-blue-400 rounded-full text-sm">Next.js</span>
+                <span className="px-3 py-1 bg-blue-500/10 text-blue-600 dark:text-blue-400 rounded-full text-sm">TypeScript</span>
+                <span className="px-3 py-1 bg-blue-500/10 text-blue-600 dark:text-blue-400 rounded-full text-sm">Tailwind CSS</span>
+                <span className="px-3 py-1 bg-blue-500/10 text-blue-600 dark:text-blue-400 rounded-full text-sm">Vue.js</span>
+              </div>
+            </div>
+            
+            <div className="card">
+              <h3 className="text-xl font-semibold mb-4 flex items-center gap-2">
+                <span className="text-2xl">⚙️</span>
+                Backend & Database
+              </h3>
+              <div className="flex flex-wrap gap-2">
+                <span className="px-3 py-1 bg-green-500/10 text-green-600 dark:text-green-400 rounded-full text-sm">Node.js</span>
+                <span className="px-3 py-1 bg-green-500/10 text-green-600 dark:text-green-400 rounded-full text-sm">Python</span>
+                <span className="px-3 py-1 bg-green-500/10 text-green-600 dark:text-green-400 rounded-full text-sm">MongoDB</span>
+                <span className="px-3 py-1 bg-green-500/10 text-green-600 dark:text-green-400 rounded-full text-sm">PostgreSQL</span>
+                <span className="px-3 py-1 bg-green-500/10 text-green-600 dark:text-green-400 rounded-full text-sm">Redis</span>
+              </div>
+            </div>
+            
+            <div className="card">
+              <h3 className="text-xl font-semibold mb-4 flex items-center gap-2">
+                <span className="text-2xl">🤖</span>
+                AI & Cloud
+              </h3>
+              <div className="flex flex-wrap gap-2">
+                <span className="px-3 py-1 bg-purple-500/10 text-purple-600 dark:text-purple-400 rounded-full text-sm">OpenAI</span>
+                <span className="px-3 py-1 bg-purple-500/10 text-purple-600 dark:text-purple-400 rounded-full text-sm">AWS</span>
+                <span className="px-3 py-1 bg-purple-500/10 text-purple-600 dark:text-purple-400 rounded-full text-sm">Vercel</span>
+                <span className="px-3 py-1 bg-purple-500/10 text-purple-600 dark:text-purple-400 rounded-full text-sm">Docker</span>
+                <span className="px-3 py-1 bg-purple-500/10 text-purple-600 dark:text-purple-400 rounded-full text-sm">TensorFlow</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div className="section-divider"></div>
+
+      {/* Why Choose Us */}
+      <section className="py-20">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="mb-4">Why Choose Grow-Withus?</h2>
+            <p className="subheading max-w-2xl mx-auto">
+              What sets us apart from other agencies and makes us the right partner for your project.
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="card group hover:shadow-xl transition-shadow">
+              <div className="text-3xl mb-4">⚡</div>
+              <h3 className="text-xl font-semibold mb-3">Fast Turnaround</h3>
+              <p className="leading-relaxed">We deliver projects 30% faster than industry average without compromising quality.</p>
+            </div>
+            
+            <div className="card group hover:shadow-xl transition-shadow">
+              <div className="text-3xl mb-4">💰</div>
+              <h3 className="text-xl font-semibold mb-3">Cost-Effective</h3>
+              <p className="leading-relaxed">Get enterprise-grade solutions at startup-friendly prices with transparent pricing.</p>
+            </div>
+            
+            <div className="card group hover:shadow-xl transition-shadow">
+              <div className="text-3xl mb-4">🎯</div>
+              <h3 className="text-xl font-semibold mb-3">ROI Focused</h3>
+              <p className="leading-relaxed">Every feature we build is designed to drive real business results and measurable growth.</p>
+            </div>
+            
+            <div className="card group hover:shadow-xl transition-shadow">
+              <div className="text-3xl mb-4">🔒</div>
+              <h3 className="text-xl font-semibold mb-3">Security First</h3>
+              <p className="leading-relaxed">Industry-standard security practices, GDPR compliance, and data protection built-in.</p>
+            </div>
+            
+            <div className="card group hover:shadow-xl transition-shadow">
+              <div className="text-3xl mb-4">📞</div>
+              <h3 className="text-xl font-semibold mb-3">Direct Communication</h3>
+              <p className="leading-relaxed">Talk directly to founders and developers—no middlemen, no communication gaps.</p>
+            </div>
+            
+            <div className="card group hover:shadow-xl transition-shadow">
+              <div className="text-3xl mb-4">🔄</div>
+              <h3 className="text-xl font-semibold mb-3">Ongoing Support</h3>
+              <p className="leading-relaxed">Post-launch support, maintenance, and iteration to keep your solution running smoothly.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div className="section-divider"></div>
+
       {/* Founders Showcase (auto-slide with large photos) */}
       <section className="py-20">
         <div className="max-w-6xl mx-auto px-4">
@@ -149,37 +300,210 @@ export default function About() {
 
       <div className="section-divider"></div>
 
-      {/* Team */}
-      <section className="py-20">
+      {/* Industries We Serve */}
+      <section className="py-20 bg-gradient-to-br from-accent-secondary/5 to-accent-primary/5">
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="mb-4">Meet Our Team</h2>
+            <h2 className="mb-4">Industries We Serve</h2>
             <p className="subheading max-w-2xl mx-auto">
-              Talented individuals who are passionate about technology and 
-              dedicated to your success.
+              Delivering tailored solutions across diverse sectors with deep domain expertise.
             </p>
           </div>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {team.map((member, index) => (
-              <div 
-                key={member.name}
-                className="card text-center group"
-                style={{ animationDelay: `${index * 100}ms` }}
-              >
-                {/* Placeholder for team member photo */}
-                <div className="w-24 h-24 mx-auto mb-4 bg-gradient-to-br from-accent-primary/20 to-accent-secondary/20 rounded-full flex items-center justify-center text-2xl font-bold">
-                  {member.name.split(' ').map(n => n[0]).join('')}
-                </div>
-                <h3 className="text-lg font-semibold mb-1">{member.name}</h3>
-                <div className="text-sm font-medium mb-2 text-accent-primary">{member.role}</div>
-                <div className="text-xs mb-3 opacity-75">{member.expertise}</div>
-                <p className="text-sm leading-relaxed">{member.description}</p>
-              </div>
-            ))}
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="card text-center group hover:scale-105 transition-transform">
+              <div className="text-4xl mb-3">🏥</div>
+              <h3 className="font-semibold mb-2">Healthcare</h3>
+              <p className="text-sm opacity-75">HIPAA-compliant solutions, telemedicine platforms</p>
+            </div>
+            
+            <div className="card text-center group hover:scale-105 transition-transform">
+              <div className="text-4xl mb-3">🏪</div>
+              <h3 className="font-semibold mb-2">E-Commerce</h3>
+              <p className="text-sm opacity-75">Online stores, marketplace platforms</p>
+            </div>
+            
+            <div className="card text-center group hover:scale-105 transition-transform">
+              <div className="text-4xl mb-3">💼</div>
+              <h3 className="font-semibold mb-2">Finance</h3>
+              <p className="text-sm opacity-75">FinTech apps, trading platforms, analytics</p>
+            </div>
+            
+            <div className="card text-center group hover:scale-105 transition-transform">
+              <div className="text-4xl mb-3">🎓</div>
+              <h3 className="font-semibold mb-2">Education</h3>
+              <p className="text-sm opacity-75">E-learning platforms, LMS solutions</p>
+            </div>
+            
+            <div className="card text-center group hover:scale-105 transition-transform">
+              <div className="text-4xl mb-3">🏨</div>
+              <h3 className="font-semibold mb-2">Hospitality</h3>
+              <p className="text-sm opacity-75">Booking systems, guest management</p>
+            </div>
+            
+            <div className="card text-center group hover:scale-105 transition-transform">
+              <div className="text-4xl mb-3">🏭</div>
+              <h3 className="font-semibold mb-2">Manufacturing</h3>
+              <p className="text-sm opacity-75">Inventory systems, IoT solutions</p>
+            </div>
+            
+            <div className="card text-center group hover:scale-105 transition-transform">
+              <div className="text-4xl mb-3">🏡</div>
+              <h3 className="font-semibold mb-2">Real Estate</h3>
+              <p className="text-sm opacity-75">Property listings, CRM platforms</p>
+            </div>
+            
+            <div className="card text-center group hover:scale-105 transition-transform">
+              <div className="text-4xl mb-3">📱</div>
+              <h3 className="font-semibold mb-2">Startups</h3>
+              <p className="text-sm opacity-75">MVP development, rapid prototyping</p>
+            </div>
           </div>
         </div>
       </section>
+
+      <div className="section-divider"></div>
+
+      {/* Advisory Team - Clean Button Approach */}
+      <section className="py-20">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="mb-4">Advisory Team</h2>
+            <p className="subheading max-w-2xl mx-auto">
+              Expert guidance from industry leaders and academic excellence.
+            </p>
+          </div>
+          
+          <div className="flex justify-center">
+            <button
+              onClick={() => setShowAdvisorModal(true)}
+              className="card group hover:shadow-2xl transition-all duration-300 hover:scale-105 cursor-pointer max-w-md"
+            >
+              <div className="flex items-center gap-6">
+                <div className="relative w-20 h-20 rounded-full overflow-hidden border-4 border-accent-primary/20 group-hover:border-accent-primary/50 transition-colors">
+                  <Image
+                    src="/images/founders/yogesh.jpeg"
+                    alt="Yogesh Todarwal"
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+                <div className="text-left flex-1">
+                  <h3 className="text-xl font-semibold mb-1">Yogesh Todarwal</h3>
+                  <div className="text-sm font-medium text-accent-primary mb-2">Strategic Advisor</div>
+                  <div className="text-xs opacity-75 mb-2">IIT Bombay | PhD Sweden</div>
+                  <div className="text-sm text-accent-primary font-medium group-hover:underline">
+                    Click to learn more →
+                  </div>
+                </div>
+              </div>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {/* Advisor Modal */}
+      {showAdvisorModal && (
+        <div 
+          className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+          onClick={() => setShowAdvisorModal(false)}
+        >
+          <div 
+            className="bg-white dark:bg-gray-900 rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Modal Header */}
+            <div className="sticky top-0 bg-gradient-to-r from-accent-primary to-accent-secondary p-6 text-white">
+              <div className="flex justify-between items-start">
+                <div>
+                  <h3 className="text-2xl font-bold mb-1">Yogesh Todarwal</h3>
+                  <p className="text-white/90">Strategic Advisor</p>
+                </div>
+                <button
+                  onClick={() => setShowAdvisorModal(false)}
+                  className="text-white hover:bg-white/20 rounded-full p-2 transition-colors"
+                  aria-label="Close"
+                >
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+
+            {/* Modal Content */}
+            <div className="p-6 space-y-6">
+              {/* Image */}
+              <div className="flex justify-center">
+                <div className="relative w-40 h-40 rounded-full overflow-hidden border-4 border-accent-primary/20">
+                  <Image
+                    src="/images/founders/yogesh.jpeg"
+                    alt="Yogesh Todarwal"
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+              </div>
+
+              {/* Education & Background */}
+              <div className="space-y-4">
+                <div className="card bg-gradient-to-br from-blue-500/10 to-cyan-500/10">
+                  <h4 className="font-semibold text-lg mb-2 flex items-center gap-2">
+                    <span className="text-xl">🎓</span>
+                    Education
+                  </h4>
+                  <ul className="space-y-2 text-sm">
+                    <li className="flex items-center gap-2">
+                      <span className="text-accent-primary">•</span>
+                      <span>PhD in Research - Sweden</span>
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <span className="text-accent-primary">•</span>
+                      <span>IIT Bombay Graduate</span>
+                    </li>
+                  </ul>
+                </div>
+
+                {/* Expertise */}
+                <div className="card bg-gradient-to-br from-purple-500/10 to-pink-500/10">
+                  <h4 className="font-semibold text-lg mb-3 flex items-center gap-2">
+                    <span className="text-xl">💼</span>
+                    Areas of Expertise
+                  </h4>
+                  <div className="flex flex-wrap gap-2">
+                    <span className="px-3 py-1 bg-accent-primary/20 text-accent-primary rounded-full text-sm">
+                      Research
+                    </span>
+                    <span className="px-3 py-1 bg-accent-primary/20 text-accent-primary rounded-full text-sm">
+                      Career Guidance
+                    </span>
+                    <span className="px-3 py-1 bg-accent-primary/20 text-accent-primary rounded-full text-sm">
+                      Stock Market
+                    </span>
+                    <span className="px-3 py-1 bg-accent-primary/20 text-accent-primary rounded-full text-sm">
+                      Business Strategy
+                    </span>
+                  </div>
+                </div>
+
+                {/* Bio */}
+                <div className="card">
+                  <h4 className="font-semibold text-lg mb-3 flex items-center gap-2">
+                    <span className="text-xl">👨‍💼</span>
+                    About
+                  </h4>
+                  <p className="leading-relaxed">
+                    Yogesh brings academic excellence and research expertise from IIT Bombay and a PhD in Sweden. 
+                    He guides in career planning, stock market strategies, and business growth, helping shape vision 
+                    and deliver success. His deep understanding of both technical and business domains makes him an 
+                    invaluable strategic advisor to Grow-Withus.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
 
       <div className="section-divider"></div>
 

@@ -396,23 +396,51 @@ a.no-fx::after {
   content: none !important; 
 }
 
-/* Enhanced Navigation Link Styles */
+/* Enhanced Navigation Link Styles with Premium Effects */
 .nav-link {
   color: var(--nav-link-color);
   padding: 0.75rem 1.25rem;
   border-radius: 0.75rem;
   font-weight: 500;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   text-decoration: none;
+  overflow: hidden;
+}
+
+/* Add animated gradient underline on hover */
+.nav-link::before {
+  content: '';
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary), var(--accent-primary));
+  background-size: 200% 100%;
+  transform: translateX(-50%);
+  transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  animation: shimmer 3s linear infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+.nav-link:hover::before, .nav-link:focus::before {
+  width: 80%;
 }
 
 .nav-link:hover, .nav-link:focus {
   color: var(--nav-link-color-hover);
   background: var(--nav-hover-bg);
-  outline: 2px solid var(--nav-focus-ring);
-  outline-offset: 2px;
-  box-shadow: 0 6px 16px -10px var(--shadow-strong);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px -6px var(--shadow-strong);
 }
 
 /* Active/current page state (apply .is-active on current link) */
@@ -422,24 +450,52 @@ a.no-fx::after {
   box-shadow: inset 0 0 0 1px color-mix(in oklab, var(--nav-focus-ring) 50%, transparent);
 }
 
+.nav-link.is-active::before {
+  width: 80%;
+}
+
 .nav-link-cta {
   color: #ffffff !important; /* force pure white for maximum contrast */
-  background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+  background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
   padding: 0.75rem 1.5rem;
   border-radius: 0.75rem;
   font-weight: 700; /* increased font weight for better visibility */
-  box-shadow: 0 2px 8px -2px var(--accent-primary)/20;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  text-shadow: 0 2px 4px rgba(0,0,0,0.5), 0 1px 2px rgba(0,0,0,0.8); /* much stronger shadow for contrast */
+  box-shadow: 0 4px 12px -2px var(--accent-primary)/30;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Animated shine effect */
+.nav-link-cta::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+  transition: left 0.6s;
+}
+
+.nav-link-cta:hover::before {
+  left: 100%;
 }
 
 .nav-link-cta:hover, .nav-link-cta:focus {
-  background: linear-gradient(90deg, var(--accent-secondary), var(--accent-primary));
+  background: linear-gradient(135deg, var(--accent-secondary), var(--accent-primary));
   color: #ffffff !important; /* force white on hover too */
-  box-shadow: 0 8px 24px -8px var(--accent-secondary)/30;
-  outline: 2px solid var(--nav-focus-ring);
-  outline-offset: 2px;
-  text-shadow: 0 2px 4px rgba(0,0,0,0.6), 0 1px 2px rgba(0,0,0,0.9); /* stronger shadow on hover */
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 12px 32px -8px var(--accent-primary)/40, 0 0 20px -5px var(--accent-secondary)/30;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.5);
+  opacity: 1; /* ensure full opacity */
+}
+
+/* Ensure text remains visible on all states */
+.nav-link-cta * {
+  color: #ffffff !important;
+  opacity: 1 !important;
 }
 
 /* Mobile Navigation Styles */

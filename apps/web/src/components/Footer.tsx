@@ -5,11 +5,13 @@ export default function Footer() {
 
   const footerLinks = {
     services: [
-      { name: "Web Development", href: "/services#web" },
-      { name: "App Development", href: "/services#app" },
-      { name: "AI Solutions", href: "/services#ai" },
-      { name: "UI/UX Design", href: "/services#design" },
-      { name: "DevOps & Cloud", href: "/services#devops" }
+      { name: "Web Development", href: "/services/website-development" },
+      { name: "App Development", href: "/services/application-development" },
+      { name: "AI Solutions", href: "/services/custom-ai-agents" },
+      { name: "E-Commerce", href: "/services/ecommerce-development" },
+      { name: "WhatsApp Business", href: "/services/whatsapp-business" },
+      { name: "Social Media", href: "/services/social-media-management" },
+      { name: "SEO & Branding", href: "/services/seo-optimization" }
     ],
     company: [
       { name: "About Us", href: "/about" },

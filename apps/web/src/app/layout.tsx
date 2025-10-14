@@ -4,6 +4,7 @@ import Header from '../components/Header'
 import Footer from '../components/Footer'
 import CookieBanner from '../components/CookieBanner'
 import SkipLink from '../components/SkipLink'
+import SmoothScroll from '../components/SmoothScroll'
 import { Inter } from 'next/font/google'
 import GoogleAnalytics from '../components/GoogleAnalytics'
 import { siteConfig } from '../config/site'
@@ -67,6 +68,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <meta name="theme-color" content="#0A0A0A" />
       </head>
       <body className="min-h-screen flex flex-col bg-white text-gray-900 dark:bg-black dark:text-gray-100">
+        <SmoothScroll />
         <Suspense>
           <GoogleAnalytics />
         </Suspense>

@@ -95,8 +95,8 @@ export default function FoundersBackground() {
       </div>
       )}
 
-      {/* Founders Info Pill Button */}
-      <div className="absolute bottom-8 right-8 z-20 pointer-events-auto">
+      {/* Founders Info Pill Button (hidden on mobile to avoid overlap) */}
+      <div className="absolute bottom-6 right-6 z-20 pointer-events-auto hidden md:block">
         <button
           onClick={() => openModal(founders[index])}
           className="group flex items-center gap-2 px-4 py-2 bg-white/10 dark:bg-black/20 backdrop-blur-sm border border-white/20 rounded-full text-white/90 text-sm font-medium hover:bg-white/20 dark:hover:bg-black/30 transition-all duration-300"

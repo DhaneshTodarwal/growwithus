@@ -1,6 +1,6 @@
 import ServiceCard from '@/components/ServiceCard'
 import Reveal from '@/components/Reveal'
-import { Globe, Smartphone, Code, LineChart, Palette, BarChart3 } from 'lucide-react'
+import { Globe, Smartphone, Code, LineChart, Palette, BarChart3, ShoppingCart, MessageCircle, Share2 } from 'lucide-react'
 
 export default function Services() {
   return (
@@ -74,6 +74,39 @@ export default function Services() {
             description="Google Ads, Meta Ads, and analytics setup to drive qualified traffic and measurable ROI."
             gradient="bg-gradient-to-br from-sky-500 to-indigo-400"
             badge="Paid Growth"
+          />
+        </Reveal>
+
+        <Reveal delay={480}>
+          <ServiceCard
+            href="/services/ecommerce-development"
+            icon={<ShoppingCart size={32} />}
+            title="E-Commerce Development"
+            description="Build powerful online stores with payment gateways, inventory management, and conversion optimization."
+            gradient="bg-gradient-to-br from-green-500 to-emerald-400"
+            badge="High Revenue"
+          />
+        </Reveal>
+
+        <Reveal delay={560}>
+          <ServiceCard
+            href="/services/whatsapp-business"
+            icon={<MessageCircle size={32} />}
+            title="WhatsApp Business API"
+            description="Automate customer service, order tracking, and broadcasts with WhatsApp chatbots and API integration."
+            gradient="bg-gradient-to-br from-teal-500 to-cyan-400"
+            badge="Trending"
+          />
+        </Reveal>
+
+        <Reveal delay={640}>
+          <ServiceCard
+            href="/services/social-media-management"
+            icon={<Share2 size={32} />}
+            title="Social Media Management"
+            description="Content creation, scheduling, engagement, and analytics for Instagram, Facebook, and LinkedIn."
+            gradient="bg-gradient-to-br from-pink-500 to-rose-400"
+            badge="Growth"
           />
         </Reveal>
       </div>

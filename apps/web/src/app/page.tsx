@@ -13,7 +13,7 @@ import TechStackSection from '../components/TechStackSection'
 import FAQSection from '../components/FAQSection'
 import BlogSection from '../components/BlogSection'
 import NewsletterSection from '../components/NewsletterSection'
-import { Code, Smartphone, Globe, ArrowRight, Rocket, Lightbulb, Handshake, BadgeDollarSign, Eye, TrendingUp, Award, Gauge, BarChart3, LineChart, Palette } from 'lucide-react';
+import { Code, Smartphone, Globe, ArrowRight, Rocket, Lightbulb, Handshake, BadgeDollarSign, Eye, TrendingUp, Award, Gauge, BarChart3, LineChart, Palette, ShoppingCart, MessageCircle, Share2 } from 'lucide-react';
 import ServiceCard from '@/components/ServiceCard';
 import Reveal from '../components/Reveal'
 
@@ -207,6 +207,16 @@ export default function HomePage() {
               <span className="font-medium">🕐 24/7 Support</span>
             </div>
           </div>
+
+          {/* Mobile-only: Founders quick link to avoid overlap */}
+          <div className="mt-6 md:hidden flex justify-center">
+            <button
+              onClick={() => { if (typeof window !== 'undefined') window.location.hash = 'founders'; }}
+              className="px-4 py-2 rounded-full border border-glassmorphism-border bg-glassmorphism-bg backdrop-blur-sm text-sm"
+            >
+              Meet Our Founders
+            </button>
+          </div>
         </div>
       </motion.section>
 
@@ -259,6 +269,36 @@ export default function HomePage() {
                 description="Intelligent chatbots, automation systems, and AI-powered tools that enhance your business operations."
                 gradient="bg-gradient-to-br from-emerald-500 to-teal-400"
                 badge="AI Powered"
+              />
+            </Reveal>
+            <Reveal delay={360}>
+              <ServiceCard
+                href="/services/ecommerce-development"
+                icon={<ShoppingCart size={32} />}
+                title="E-Commerce Development"
+                description="Build powerful online stores with payment gateways, inventory management, and conversion optimization."
+                gradient="bg-gradient-to-br from-green-500 to-emerald-400"
+                badge="High Revenue"
+              />
+            </Reveal>
+            <Reveal delay={480}>
+              <ServiceCard
+                href="/services/whatsapp-business"
+                icon={<MessageCircle size={32} />}
+                title="WhatsApp Business API"
+                description="Automate customer service and order tracking with WhatsApp chatbots and API integration."
+                gradient="bg-gradient-to-br from-teal-500 to-cyan-400"
+                badge="Trending"
+              />
+            </Reveal>
+            <Reveal delay={600}>
+              <ServiceCard
+                href="/services/social-media-management"
+                icon={<Share2 size={32} />}
+                title="Social Media Management"
+                description="Content creation, scheduling, and analytics for Instagram, Facebook, and LinkedIn growth."
+                gradient="bg-gradient-to-br from-pink-500 to-rose-400"
+                badge="Growth"
               />
             </Reveal>
           </div>

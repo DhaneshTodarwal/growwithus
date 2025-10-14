@@ -9,7 +9,6 @@ import FoundersSection from '../components/FoundersSection'
 import Testimonials from '../components/Testimonials'
 import ProcessSection from '../components/ProcessSection'
 import StatsSection from '../components/StatsSection'
-import TechStackSection from '../components/TechStackSection'
 import FAQSection from '../components/FAQSection'
 import BlogSection from '../components/BlogSection'
 import NewsletterSection from '../components/NewsletterSection'
@@ -308,7 +307,6 @@ export default function HomePage() {
   <ProcessSection />
   <FoundersSection />
       <StatsSection />
-      <TechStackSection />
       <Testimonials />
 
       <div className="mx-auto max-w-7xl px-6 my-6 md:my-8 hidden md:block">

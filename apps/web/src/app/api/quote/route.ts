@@ -1,16 +1,64 @@
 import { NextResponse } from 'next/server'
 
 export async function POST(req: Request) {
-  const body = await req.json()
-  if (body.website) {
-    return NextResponse.json({ error: 'Blocked' }, { status: 400 })
+  try {
+    const body = await req.json()
+    
+    // Honeypot check - block spam bots
+    if (body.website) {
+      return NextResponse.json({ error: 'Blocked' }, { status: 400 })
+    }
+    
+    // Validate required fields
+    if (!body.name || !body.email || !body.phone || !body.company || !body.message) {
+      return NextResponse.json({ error: 'All fields are required' }, { status: 400 })
+    }
+    
+    // Validate phone number (minimum 10 digits)
+    const phoneDigits = body.phone.replace(/\D/g, '')
+    if (phoneDigits.length < 10) {
+      return NextResponse.json({ error: 'Phone number must be at least 10 digits' }, { status: 400 })
+    }
+    
+    // Send email notification via Web3Forms
+    const emailResponse = await fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        access_key: '7dbc2fc6-f2e9-4c9c-8b4b-542f1b7b0548',
+        subject: `🎉 New Quote Request from ${body.name}`,
+        from_name: 'Grow-Withus Website',
+        to: 'officialgrowwithus1@gmail.com',
+        name: body.name,
+        email: body.email,
+        phone: body.phone,
+        company: body.company,
+        project_type: body.projectType || 'other',
+        message: body.message,
+        submitted_at: new Date().toISOString()
+      })
+    })
+    
+    if (!emailResponse.ok) {
+      console.error('Web3Forms error:', await emailResponse.text())
+      return NextResponse.json({ error: 'Failed to send email' }, { status: 500 })
+    }
+    
+    const emailData = await emailResponse.json()
+    
+    if (!emailData.success) {
+      console.error('Web3Forms returned error:', emailData)
+      return NextResponse.json({ error: 'Failed to send email' }, { status: 500 })
+    }
+    
+    return NextResponse.json({ 
+      received: true, 
+      at: new Date().toISOString(),
+      message: 'Quote request submitted successfully'
+    })
+    
+  } catch (error) {
+    console.error('Quote submission error:', error)
+    return NextResponse.json({ error: 'Internal server error' }, { status: 500 })
   }
-  const api = process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:4001'
-  const res = await fetch(`${api}/quote`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(body)
-  })
-  const data = await res.json()
-  return NextResponse.json(data, { status: res.status })
 }

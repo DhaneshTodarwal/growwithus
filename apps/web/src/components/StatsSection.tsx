@@ -95,24 +95,24 @@ function StatCard({ stat, index }: { stat: Stat; index: number }) {
 export default function StatsSection() {
   const stats: Stat[] = [
     {
-      target: 250,
-      suffix: '+',
-      label: 'Projects Completed',
-      description: '250+ successful digital solutions delivered.',
+      target: 14,
+      suffix: ' Days',
+      label: 'Avg Delivery Time',
+      description: 'Most projects completed in just 2 weeks.',
       icon: TrendingUp,
     },
     {
-      target: 95,
+      target: 100,
       suffix: '%',
       label: 'Client Satisfaction',
-      description: '95% satisfaction based on project feedback.',
+      description: 'Every client loves our work and dedication.',
       icon: Smile,
     },
     {
-      target: 10,
+      target: 20,
       suffix: '+',
-      label: 'Years Experience',
-      description: '10+ years in cutting-edge web development.',
+      label: 'Modern Technologies',
+      description: 'Latest tools: React, Next.js, AI, and more.',
       icon: Award,
     },
     {
@@ -136,12 +136,12 @@ export default function StatsSection() {
   <div className="text-center mb-6 md:mb-8">
           <Reveal>
             <h2 id="results-heading" className="text-2xl md:text-4xl font-bold tracking-tight text-text-primary mb-2">
-              Results That Speak for Themselves
+              Our Track Record
             </h2>
           </Reveal>
           <Reveal delay={100}>
             <p className="text-text-secondary max-w-2xl mx-auto text-sm md:text-base">
-              We measure success by real outcomes and lasting partnerships.
+              Numbers that speak to our commitment and success in delivering exceptional results.
             </p>
           </Reveal>
         </div>

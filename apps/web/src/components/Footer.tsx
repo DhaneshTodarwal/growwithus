@@ -16,21 +16,21 @@ export default function Footer() {
     company: [
       { name: "About Us", href: "/about" },
       { name: "Case Studies", href: "/case-studies" },
-      { name: "Our Process", href: "/process" },
+      { name: "Pricing", href: "/pricing" },
       { name: "Careers", href: "/careers" },
       { name: "Contact", href: "/contact" }
     ],
     resources: [
       { name: "Blog", href: "/blog" },
-      { name: "Documentation", href: "/docs" },
       { name: "AI Demos", href: "/ai-demos" },
-      { name: "Support", href: "/support" },
-      { name: "FAQ", href: "/faq" }
+      { name: "Services", href: "/services" },
+      { name: "Get a Quote", href: "/pricing" },
+      { name: "About", href: "/about" }
     ],
     legal: [
-      { name: "Privacy Policy", href: "/privacy" },
-      { name: "Terms of Service", href: "/terms" },
-      { name: "Cookie Policy", href: "/cookies" }
+      { name: "Privacy Policy", href: "/legal/privacy" },
+      { name: "Terms of Service", href: "/legal/terms" },
+      { name: "Cookie Policy", href: "/legal/cookies" }
     ]
   }
 

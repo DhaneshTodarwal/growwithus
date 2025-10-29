@@ -4,8 +4,7 @@ export const siteConfig = {
   description:
     'Grow-Withus builds premium web & app experiences and custom AI agents for startups, SMBs, and mid-market enterprises.',
   // Public base URL. Override in production by setting NEXT_PUBLIC_SITE_URL in Vercel Project Settings.
-  // Using the current Vercel deployment subdomain as a fallback so OG/meta links are correct even without env var.
-  url: process.env.NEXT_PUBLIC_SITE_URL || 'https://growwithus-hl5rzie3a-dhaneshs-projects-45a64aa2.vercel.app',
+  url: process.env.NEXT_PUBLIC_SITE_URL || 'https://officialgrowwithus.vercel.app',
   twitter: '@TodarwalDhanesh',
   // Optional logo config.
   // Place files under apps/web/public and reference with absolute paths like '/images/logo-light.png'.

@@ -3,6 +3,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
 import ThemeToggle from './ThemeToggle'
+import WhatsAppButton from './WhatsAppButton'
 import { Menu, X } from 'lucide-react'
 import { siteConfig } from '../config/site'
 
@@ -59,7 +60,7 @@ export default function Header() {
           </span>
         </Link>
         
-        <div className="flex items-center gap-6">
+        <div className="flex items-center gap-3">
           {/* Enhanced Desktop Navigation */}
           <div className="hidden lg:flex gap-2 text-sm">
             <Link href="/services" className="nav-link">Services</Link>
@@ -71,6 +72,11 @@ export default function Header() {
             <Link href="/blog" className="nav-link">Blog</Link>
             <Link href="/careers" className="nav-link">Careers</Link>
             <Link href="/contact" className="nav-link-cta">Contact</Link>
+          </div>
+          
+          {/* WhatsApp Button - Desktop */}
+          <div className="hidden lg:block">
+            <WhatsAppButton position="inline" />
           </div>
           
           <ThemeToggle />

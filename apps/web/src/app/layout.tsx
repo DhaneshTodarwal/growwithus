@@ -5,6 +5,7 @@ import Footer from '../components/Footer'
 import CookieBanner from '../components/CookieBanner'
 import SkipLink from '../components/SkipLink'
 import SmoothScroll from '../components/SmoothScroll'
+import WhatsAppButton from '../components/WhatsAppButton'
 import { Inter } from 'next/font/google'
 import GoogleAnalytics from '../components/GoogleAnalytics'
 import { siteConfig } from '../config/site'
@@ -81,6 +82,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <main id="main-content" className="flex-1">{children}</main>
         <Footer />
         <CookieBanner />
+        <WhatsAppButton position="floating" />
         <script type="application/ld+json" suppressHydrationWarning dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }} />
       </body>
     </html>

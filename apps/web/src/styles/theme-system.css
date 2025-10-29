@@ -190,23 +190,23 @@ p {
 }
 
 /* Enhanced Links */
-/* Global anchor styles (exclude buttons) */
-a:not(.btn):not(.btn-hero-primary):not(.btn-hero-secondary):not(.nav-link):not(.nav-link-cta):not(.mobile-nav-link):not(.mobile-nav-link-cta) {
+/* Global anchor styles (exclude buttons, nav links, and logo) */
+a:not(.btn):not(.btn-hero-primary):not(.btn-hero-secondary):not(.nav-link):not(.nav-link-cta):not(.mobile-nav-link):not(.mobile-nav-link-cta):not(.logo-link) {
   color: var(--accent-primary);
   transition: all 0.2s ease;
   text-decoration: none;
   position: relative;
 }
 
-a:not(.btn):not(.btn-hero-primary):not(.btn-hero-secondary):not(.nav-link):not(.nav-link-cta):not(.mobile-nav-link):not(.mobile-nav-link-cta):hover,
-a:not(.btn):not(.btn-hero-primary):not(.btn-hero-secondary):not(.nav-link):not(.nav-link-cta):not(.mobile-nav-link):not(.mobile-nav-link-cta):focus {
+a:not(.btn):not(.btn-hero-primary):not(.btn-hero-secondary):not(.nav-link):not(.nav-link-cta):not(.mobile-nav-link):not(.mobile-nav-link-cta):not(.logo-link):hover,
+a:not(.btn):not(.btn-hero-primary):not(.btn-hero-secondary):not(.nav-link):not(.nav-link-cta):not(.mobile-nav-link):not(.mobile-nav-link-cta):not(.logo-link):focus {
   color: var(--accent-secondary);
   outline: 2px solid var(--accent-primary);
   outline-offset: 3px;
   border-radius: 3px;
 }
 
-a:not(.btn):not(.nav-link):not(.nav-link-cta):not(.mobile-nav-link):not(.mobile-nav-link-cta):hover::after {
+a:not(.btn):not(.nav-link):not(.nav-link-cta):not(.mobile-nav-link):not(.mobile-nav-link-cta):not(.logo-link):hover::after {
   content: '';
   position: absolute;
   bottom: -2px;

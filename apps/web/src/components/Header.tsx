@@ -21,7 +21,7 @@ export default function Header() {
   <header className={`navbar sticky top-0 z-40 ${scrolled ? 'is-scrolled' : ''}`}>
       <nav className="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
         {/* Enhanced Logo: prefer image from siteConfig.logo, fallback to monogram */}
-        <Link href="/" className="group flex items-center gap-3 no-underline hover:no-underline" aria-label={`${siteConfig.name} home`}>
+        <Link href="/" className="logo-link group flex items-center gap-3 no-underline hover:no-underline" aria-label={`${siteConfig.name} home`}>
           {siteConfig.logo?.light ? (
             <>
               {/* Light theme logo */}

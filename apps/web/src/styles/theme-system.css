@@ -399,13 +399,15 @@ a.no-fx::after {
 /* Enhanced Navigation Link Styles with Premium Effects */
 .nav-link {
   color: var(--nav-link-color);
-  padding: 0.75rem 1.25rem;
-  border-radius: 0.75rem;
+  padding: 0.625rem 1rem;
+  border-radius: 0.5rem;
   font-weight: 500;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  font-size: 0.875rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   text-decoration: none;
   overflow: hidden;
+  white-space: nowrap;
 }
 
 /* Add animated gradient underline on hover */
@@ -457,14 +459,16 @@ a.no-fx::after {
 .nav-link-cta {
   color: #ffffff !important; /* force pure white for maximum contrast */
   background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
-  padding: 0.75rem 1.5rem;
-  border-radius: 0.75rem;
-  font-weight: 700; /* increased font weight for better visibility */
+  padding: 0.625rem 1.25rem;
+  border-radius: 0.5rem;
+  font-weight: 600; /* slightly reduced font weight */
+  font-size: 0.875rem; /* match other nav items */
   box-shadow: 0 4px 12px -2px var(--accent-primary)/30;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  text-shadow: 0 1px 2px rgba(0,0,0,0.2);
   position: relative;
   overflow: hidden;
+  white-space: nowrap;
 }
 
 /* Animated shine effect */
@@ -486,16 +490,24 @@ a.no-fx::after {
 .nav-link-cta:hover, .nav-link-cta:focus {
   background: linear-gradient(135deg, var(--accent-secondary), var(--accent-primary));
   color: #ffffff !important; /* force white on hover too */
-  transform: translateY(-2px) scale(1.02);
-  box-shadow: 0 12px 32px -8px var(--accent-primary)/40, 0 0 20px -5px var(--accent-secondary)/30;
-  text-shadow: 0 2px 6px rgba(0,0,0,0.5);
-  opacity: 1; /* ensure full opacity */
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px -6px var(--accent-primary)/40;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+  opacity: 1 !important; /* ensure full opacity */
 }
 
 /* Ensure text remains visible on all states */
-.nav-link-cta * {
+.nav-link-cta,
+.nav-link-cta:hover,
+.nav-link-cta:focus,
+.nav-link-cta:active {
   color: #ffffff !important;
   opacity: 1 !important;
+}
+
+.nav-link-cta * {
+  color: inherit !important;
+  opacity: inherit !important;
 }
 
 /* Mobile Navigation Styles */

@@ -51,6 +51,41 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: 'Failed to send email' }, { status: 500 })
     }
     
+    console.log('[quote] Email sent successfully')
+    
+    // Save to Google Sheets (non-blocking - won't fail if sheets fails)
+    try {
+      const sheetsUrl = process.env.GOOGLE_SHEETS_FORMS_WEBHOOK_URL
+      if (sheetsUrl) {
+        const headers = req.headers
+        const userAgent = headers.get('user-agent') || 'Unknown'
+        const device = /mobile/i.test(userAgent) ? 'Mobile' : 'Desktop'
+        
+        await fetch(sheetsUrl, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            formType: 'quote',
+            timestamp: new Date().toISOString(),
+            name: body.name,
+            email: body.email,
+            phone: body.phone,
+            company: body.company,
+            service: body.service || 'Not specified',
+            budget: body.budget || 'Not specified',
+            timeline: body.timeline || 'Not specified',
+            message: body.message,
+            page: headers.get('referer') || 'Direct',
+            device
+          })
+        })
+        console.log('[quote] Saved to Google Sheets')
+      }
+    } catch (sheetsError) {
+      console.error('[quote] Google Sheets error (non-critical):', sheetsError)
+      // Don't fail the request if sheets fails
+    }
+    
     return NextResponse.json({ 
       received: true, 
       at: new Date().toISOString(),

@@ -384,9 +384,12 @@ a:not(.btn):not(.nav-link):not(.nav-link-cta):not(.mobile-nav-link):not(.mobile-
 }
 
 /* Remove underline effect for designated nav links/buttons */
-.nav-link::after, .nav-link-cta::after {
+.nav-link::after {
   content: none !important; 
 }
+
+/* Keep ::after for nav-link-cta for shine effect */
+/* Removed .nav-link-cta from the content:none rule */
 
 /* Helper to disable global link effects where not desired */
 a.no-fx {
@@ -456,60 +459,70 @@ a.no-fx::after {
   width: 80%;
 }
 
+/* Contact Button - Simple and Reliable */
 .nav-link-cta {
-  color: var(--text-primary) !important;
-  background: transparent;
-  border: 2px solid var(--accent-primary);
+  /* Base state: outlined button */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   padding: 0.625rem 1.25rem;
-  border-radius: 0.5rem;
-  font-weight: 600;
   font-size: 0.875rem;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  position: relative;
-  overflow: hidden;
+  font-weight: 600;
+  line-height: 1.5;
   white-space: nowrap;
-  isolation: isolate; /* Create stacking context */
-}
-
-.nav-link-cta:hover, .nav-link-cta:focus {
-  background: linear-gradient(135deg, #0ea5e9, #8b5cf6); /* Use explicit colors for reliability */
-  color: #ffffff !important;
-  border-color: transparent;
-  transform: translateY(-1px);
-  box-shadow: 0 8px 20px -6px rgba(14, 165, 233, 0.4);
-}
-
-/* Ensure text stays on top and visible */
-.nav-link-cta span,
-.nav-link-cta * {
+  border-radius: 0.5rem;
+  
+  /* Colors for base state */
+  color: var(--accent-primary) !important;
+  background-color: transparent !important;
+  border: 2px solid var(--accent-primary) !important;
+  
+  /* Smooth transitions */
+  transition: all 0.25s ease-in-out !important;
+  
+  /* Ensure proper rendering */
   position: relative;
-  z-index: 2;
-  color: inherit !important;
+  text-decoration: none !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Animated shine effect - kept simple */
-.nav-link-cta::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-  transition: left 0.6s;
-  z-index: 1;
-  pointer-events: none;
-}
-
-.nav-link-cta:hover::after {
-  left: 100%;
-}
-
-/* Explicit active state */
+/* Hover and Focus states - filled button with white text */
+.nav-link-cta:hover,
+.nav-link-cta:focus,
 .nav-link-cta:active {
+  /* Solid gradient background */
+  background: linear-gradient(135deg, #0ea5e9 0%, #8b5cf6 100%) !important;
+  
+  /* Pure white text - multiple declarations for browser compatibility */
   color: #ffffff !important;
-  transform: translateY(0);
-  background: linear-gradient(135deg, #0ea5e9, #8b5cf6);
+  -webkit-text-fill-color: #ffffff !important;
+  
+  /* Remove border */
+  border-color: transparent !important;
+  
+  /* Subtle lift effect */
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(14, 165, 233, 0.3);
+  
+  /* Ensure text is visible */
+  opacity: 1 !important;
+  text-shadow: none !important;
+}
+
+/* Force visibility on all child elements */
+.nav-link-cta *,
+.nav-link-cta:hover *,
+.nav-link-cta:focus *,
+.nav-link-cta:active * {
+  color: inherit !important;
+  -webkit-text-fill-color: inherit !important;
+}
+
+/* Remove any pseudo-elements that might interfere */
+.nav-link-cta::before,
+.nav-link-cta::after {
+  display: none !important;
 }
 
 /* Mobile Navigation Styles */

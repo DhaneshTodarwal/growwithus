@@ -57,27 +57,43 @@ export async function POST(req: Request) {
       // Save to Google Sheets (non-blocking - won't fail if sheets fails)
       try {
         const sheetsUrl = process.env.GOOGLE_SHEETS_FORMS_WEBHOOK_URL
+        console.log('[contact] Google Sheets URL configured:', !!sheetsUrl)
+        
         if (sheetsUrl) {
           const headers = req.headers
           const userAgent = headers.get('user-agent') || 'Unknown'
           const device = /mobile/i.test(userAgent) ? 'Mobile' : 'Desktop'
           
-          await fetch(sheetsUrl, {
+          const sheetData = {
+            formType: 'contact',
+            timestamp: new Date().toISOString(),
+            name,
+            email,
+            phone: data.phone || 'Not provided',
+            message,
+            page: headers.get('referer') || 'Direct',
+            device,
+            userAgent
+          }
+          
+          console.log('[contact] Sending to Google Sheets:', JSON.stringify(sheetData))
+          
+          const sheetsResponse = await fetch(sheetsUrl, {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              formType: 'contact',
-              timestamp: new Date().toISOString(),
-              name,
-              email,
-              phone: data.phone || 'Not provided',
-              message,
-              page: headers.get('referer') || 'Direct',
-              device,
-              userAgent
-            })
+            headers: { 
+              'Content-Type': 'application/json',
+              'Accept': 'application/json'
+            },
+            body: JSON.stringify(sheetData),
+            redirect: 'follow'
           })
-          console.log('[contact] Saved to Google Sheets')
+          
+          console.log('[contact] Google Sheets response status:', sheetsResponse.status)
+          const sheetsResult = await sheetsResponse.text()
+          console.log('[contact] Google Sheets response:', sheetsResult)
+          console.log('[contact] Saved to Google Sheets successfully')
+        } else {
+          console.log('[contact] Google Sheets URL not configured - skipping')
         }
       } catch (sheetsError) {
         console.error('[contact] Google Sheets error (non-critical):', sheetsError)

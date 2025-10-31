@@ -36,7 +36,26 @@ export async function POST(req: Request) {
           name: name,
           email: email,
           message: message,
-          submitted_at: new Date().toISOString()
+          submitted_at: new Date().toISOString(),
+          // Auto-reply to the user
+          replyto: email,
+          autoresponse: true,
+          autoresponse_subject: 'Thank you for contacting Grow-WithUs! 🎉',
+          autoresponse_message: `Hi ${name},
+
+Thank you for reaching out to Grow-WithUs! We've received your message and our team will get back to you within 24 hours.
+
+In the meantime, feel free to:
+• Check out our services: https://officialgrowwithus.vercel.app/services
+• Explore our case studies: https://officialgrowwithus.vercel.app/case-studies
+• Connect with us on WhatsApp: +91 820-896-3473
+
+Your message:
+"${message.substring(0, 200)}${message.length > 200 ? '...' : ''}"
+
+Best regards,
+The Grow-WithUs Team
+https://officialgrowwithus.vercel.app`
         })
       })
       

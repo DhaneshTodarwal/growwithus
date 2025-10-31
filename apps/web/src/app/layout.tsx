@@ -67,6 +67,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/site.webmanifest" />
         <meta name="theme-color" content="#0A0A0A" />
+        {/* Google Search Console Verification */}
+        <meta name="google-site-verification" content="uQzIZuW7yQEoraQ5-l0v-kSjrIYXbqEj8RVsSfrUrcg" />
       </head>
       <body className="min-h-screen flex flex-col bg-white text-gray-900 dark:bg-black dark:text-gray-100">
         <SmoothScroll />

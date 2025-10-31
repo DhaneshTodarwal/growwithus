@@ -35,7 +35,35 @@ export async function POST(req: Request) {
         company: body.company,
         project_type: body.projectType || 'other',
         message: body.message,
-        submitted_at: new Date().toISOString()
+        submitted_at: new Date().toISOString(),
+        // Auto-reply to the user
+        replyto: body.email,
+        autoresponse: true,
+        autoresponse_subject: 'Your Quote Request Has Been Received! 🚀',
+        autoresponse_message: `Hi ${body.name},
+
+Thank you for requesting a quote from Grow-WithUs! We're excited about the opportunity to work with ${body.company}.
+
+Our team is reviewing your requirements and will send you a detailed proposal within 24-48 hours.
+
+What happens next:
+1. ✅ We'll review your project requirements
+2. 📊 Prepare a customized proposal with pricing
+3. 📞 Schedule a call to discuss the details
+4. 🚀 Get started on your project!
+
+Your Quote Details:
+• Company: ${body.company}
+• Service: ${body.service || 'Not specified'}
+• Budget: ${body.budget || 'Not specified'}
+• Timeline: ${body.timeline || 'Not specified'}
+
+Have questions? Reply to this email or reach us:
+• WhatsApp: +91 820-896-3473
+• Website: https://officialgrowwithus.vercel.app
+
+Best regards,
+The Grow-WithUs Team`
       })
     })
     

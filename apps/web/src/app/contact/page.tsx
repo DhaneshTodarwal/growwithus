@@ -6,6 +6,7 @@ import { useState } from 'react'
 import Script from 'next/script'
 import Reveal from '../../components/Reveal'
 import { Calendar, Phone, Mail, Send, ShieldCheck, CheckCircle2, HelpCircle } from 'lucide-react'
+import { trackContactFormSubmission, trackCalendlyClick } from '../../lib/gtag'
 
 type FormState = {
   name: string
@@ -51,6 +52,14 @@ export default function Contact() {
         body: JSON.stringify(state)
       })
       if (!res.ok) throw new Error('Failed to send')
+      
+      // Track successful conversion in Google Analytics
+      trackContactFormSubmission({
+        name: state.name,
+        email: state.email,
+        messageLength: state.message.length
+      })
+      
       setStatus('success')
       setState(initialState)
     } catch (err) {
@@ -98,7 +107,13 @@ export default function Contact() {
               <li className="flex items-start gap-2"><CheckCircle2 className="w-4 h-4 text-accent-primary mt-0.5"/> Modern stack: Next.js, AI agents, cloud</li>
             </ul>
             <div className="mt-5 flex flex-col sm:flex-row gap-3">
-              <a href="https://calendly.com/dhaneshdata01/30min" target="_blank" rel="noopener noreferrer" className="btn btn-primary btn-sparkle inline-flex items-center justify-center gap-2">
+              <a 
+                href="https://calendly.com/dhaneshdata01/30min" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                onClick={() => trackCalendlyClick()}
+                className="btn btn-primary btn-sparkle inline-flex items-center justify-center gap-2"
+              >
                 Book 30‑min Call <Phone className="w-4 h-4" />
               </a>
                 <a href="mailto:officialdhaneshjain@gmail.com" className="btn btn-secondary btn-sparkle inline-flex items-center justify-center gap-2">

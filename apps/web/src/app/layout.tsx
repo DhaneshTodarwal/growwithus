@@ -9,6 +9,12 @@ import WhatsAppButton from '../components/WhatsAppButton'
 import { Inter } from 'next/font/google'
 import GoogleAnalytics from '../components/GoogleAnalytics'
 import { siteConfig } from '../config/site'
+import { 
+  organizationSchema, 
+  localBusinessSchema, 
+  websiteSchema, 
+  professionalServiceSchema 
+} from '../lib/schema'
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter', display: 'swap' })
 
@@ -42,13 +48,6 @@ export const metadata = {
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-  const orgJsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'Organization',
-    name: siteConfig.name,
-    url: siteConfig.url,
-    sameAs: []
-  }
   return (
     <html lang="en" className={inter.variable}>
       <head>
@@ -85,7 +84,28 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Footer />
         <CookieBanner />
         <WhatsAppButton position="floating" />
-        <script type="application/ld+json" suppressHydrationWarning dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }} />
+        
+        {/* Structured Data for SEO - Multiple schemas for better coverage */}
+        <script 
+          type="application/ld+json" 
+          suppressHydrationWarning 
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }} 
+        />
+        <script 
+          type="application/ld+json" 
+          suppressHydrationWarning 
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }} 
+        />
+        <script 
+          type="application/ld+json" 
+          suppressHydrationWarning 
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }} 
+        />
+        <script 
+          type="application/ld+json" 
+          suppressHydrationWarning 
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(professionalServiceSchema) }} 
+        />
       </body>
     </html>
   )

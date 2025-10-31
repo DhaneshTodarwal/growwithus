@@ -1,5 +1,6 @@
 'use client'
 import { useState } from 'react'
+import { trackQuoteFormSubmission } from '../../lib/gtag'
 
 export default function PricingPage() {
   const [form, setForm] = useState({ name: '', email: '', phone: '', company: '', projectType: 'other', message: '', website: '' })
@@ -19,6 +20,15 @@ export default function PricingPage() {
         body: JSON.stringify(form)
       })
       if (!res.ok) throw new Error('Request failed')
+      
+      // Track successful conversion in Google Analytics
+      trackQuoteFormSubmission({
+        name: form.name,
+        email: form.email,
+        company: form.company,
+        projectType: form.projectType
+      })
+      
       setStatus('Received! We will reply within 24 hours.')
     } catch (e) {
       setStatus('Failed to send. Please try again.')

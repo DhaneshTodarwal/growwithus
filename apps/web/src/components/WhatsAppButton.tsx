@@ -2,6 +2,7 @@
 
 import { MessageCircle } from 'lucide-react'
 import { useState } from 'react'
+import { trackWhatsAppClick } from '../lib/gtag'
 
 interface WhatsAppButtonProps {
   phoneNumber?: string
@@ -19,7 +20,10 @@ export default function WhatsAppButton({
   const [isHovered, setIsHovered] = useState(false)
 
   const handleClick = async () => {
-    // Track the click before opening WhatsApp
+    // Track in Google Analytics
+    trackWhatsAppClick(position)
+    
+    // Track the click in Google Sheets
     try {
       await fetch('/api/whatsapp-track', {
         method: 'POST',

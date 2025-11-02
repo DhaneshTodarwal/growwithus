@@ -83,19 +83,21 @@ export default function About() {
             <h2 className="mb-6">Our Story</h2>
             <div className="space-y-4 text-lg leading-relaxed">
               <p>
-                {siteConfig.name} was born from a simple observation: too many businesses 
-                struggle with outdated digital tools that hold them back instead 
-                of propelling them forward.
+                {siteConfig.name} was born from a fresh perspective: businesses today 
+                need modern, intelligent solutions that drive real results—not 
+                outdated tools that create more problems than they solve.
               </p>
               <p>
-                Founded in 2019, we set out to bridge the gap between cutting-edge 
-                technology and practical business solutions. Our team combines deep 
-                technical expertise with real-world business experience.
+                We're a dynamic team of innovators who saw a gap in the market 
+                for accessible, high-quality digital solutions. By combining the 
+                latest technologies with proven business strategies, we help 
+                companies leap ahead of their competition.
               </p>
               <p>
-                Today, we're proud to have helped over 150 companies transform their 
-                digital presence and leverage AI to streamline operations, enhance 
-                customer experiences, and drive growth.
+                Our mission is simple: deliver cutting-edge websites, AI solutions, 
+                and custom software that don't just meet expectations—they exceed 
+                them. Every project is an opportunity to showcase what's possible 
+                when creativity meets technical excellence.
               </p>
             </div>
           </div>
@@ -124,19 +126,19 @@ export default function About() {
           
           <div className="grid md:grid-cols-4 gap-8">
             <div className="text-center">
-              <div className="text-5xl font-bold gradient-text mb-2">150+</div>
+              <div className="text-5xl font-bold gradient-text mb-2">50+</div>
               <div className="text-lg font-semibold mb-1">Projects Delivered</div>
               <p className="text-sm opacity-75">Across web, mobile, and AI</p>
             </div>
             <div className="text-center">
-              <div className="text-5xl font-bold gradient-text mb-2">98%</div>
+              <div className="text-5xl font-bold gradient-text mb-2">100%</div>
               <div className="text-lg font-semibold mb-1">Client Satisfaction</div>
-              <p className="text-sm opacity-75">Rated 4.9/5 average</p>
+              <p className="text-sm opacity-75">Rated 5/5 average</p>
             </div>
             <div className="text-center">
-              <div className="text-5xl font-bold gradient-text mb-2">6+</div>
-              <div className="text-lg font-semibold mb-1">Years Experience</div>
-              <p className="text-sm opacity-75">Since 2019</p>
+              <div className="text-5xl font-bold gradient-text mb-2">15+</div>
+              <div className="text-lg font-semibold mb-1">Active Clients</div>
+              <p className="text-sm opacity-75">Growing every month</p>
             </div>
             <div className="text-center">
               <div className="text-5xl font-bold gradient-text mb-2">24/7</div>

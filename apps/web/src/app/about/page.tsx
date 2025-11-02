@@ -74,6 +74,8 @@ export default function About() {
         </div>
       </section>
 
+      {/* VERCEL BUILD TEST - Remove after deployment */}
+
       <div className="section-divider"></div>
 
       {/* Company Story */}

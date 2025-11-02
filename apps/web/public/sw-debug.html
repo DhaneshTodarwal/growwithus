@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Service Worker Debug</title>
+    <style>
+        body {
+            font-family: monospace;
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #1e293b;
+            color: #e2e8f0;
+        }
+        .log {
+            background: #0f172a;
+            border: 1px solid #334155;
+            border-radius: 8px;
+            padding: 16px;
+            margin: 10px 0;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+        .success { color: #10b981; }
+        .error { color: #ef4444; }
+        .warning { color: #f59e0b; }
+        .info { color: #3b82f6; }
+        button {
+            background: #6366f1;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 5px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+        button:hover { background: #4f46e5; }
+        h2 { color: #f1f5f9; }
+        pre { margin: 5px 0; }
+    </style>
+</head>
+<body>
+    <h1>🔧 Service Worker Debugger</h1>
+    
+    <div>
+        <button onclick="registerSW()">1. Register Service Worker</button>
+        <button onclick="checkSWStatus()">2. Check Status</button>
+        <button onclick="testInstall()">3. Test Install</button>
+        <button onclick="clearLogs()">Clear Logs</button>
+        <button onclick="location.reload()">Reload Page</button>
+    </div>
+
+    <h2>📊 Console Logs:</h2>
+    <div id="logs" class="log"></div>
+
+    <h2>📝 Instructions:</h2>
+    <div class="log">
+        <pre class="info">
+1. Click "Register Service Worker" button
+2. Wait 2 seconds
+3. Click "Check Status" - should show "activated"
+4. Click "Test Install" - should trigger install prompt
+5. Check browser console (F12) for detailed logs
+
+If Service Worker registers successfully:
+- Green "✅ Registered" message will appear
+- Install prompt should work
+- You can install the app!
+        </pre>
+    </div>
+
+    <script>
+        const logsDiv = document.getElementById('logs');
+        
+        function log(message, type = 'info') {
+            const timestamp = new Date().toLocaleTimeString();
+            const logEntry = document.createElement('pre');
+            logEntry.className = type;
+            logEntry.textContent = `[${timestamp}] ${message}`;
+            logsDiv.appendChild(logEntry);
+            logsDiv.scrollTop = logsDiv.scrollHeight;
+            console.log(message);
+        }
+
+        function clearLogs() {
+            logsDiv.innerHTML = '';
+            log('Logs cleared', 'info');
+        }
+
+        async function registerSW() {
+            log('🔄 Attempting to register Service Worker...', 'info');
+            
+            if (!('serviceWorker' in navigator)) {
+                log('❌ Service Workers not supported in this browser', 'error');
+                return;
+            }
+
+            try {
+                const registration = await navigator.serviceWorker.register('/service-worker.js', {
+                    scope: '/'
+                });
+                
+                log('✅ Service Worker registered successfully!', 'success');
+                log(`📍 Scope: ${registration.scope}`, 'info');
+                
+                if (registration.installing) {
+                    log('⏳ Service Worker is installing...', 'warning');
+                } else if (registration.waiting) {
+                    log('⏸️ Service Worker is waiting...', 'warning');
+                } else if (registration.active) {
+                    log('✅ Service Worker is ACTIVE!', 'success');
+                }
+
+                // Listen for state changes
+                if (registration.installing) {
+                    registration.installing.addEventListener('statechange', (e) => {
+                        log(`🔄 SW State changed to: ${e.target.state}`, 'info');
+                    });
+                }
+
+                setTimeout(() => {
+                    log('ℹ️  Now click "Check Status" to verify', 'info');
+                }, 1000);
+
+            } catch (error) {
+                log(`❌ Registration failed: ${error.message}`, 'error');
+                log(`Error: ${error}`, 'error');
+            }
+        }
+
+        async function checkSWStatus() {
+            log('🔍 Checking Service Worker status...', 'info');
+            
+            if (!('serviceWorker' in navigator)) {
+                log('❌ Service Workers not supported', 'error');
+                return;
+            }
+
+            try {
+                const registration = await navigator.serviceWorker.getRegistration();
+                
+                if (!registration) {
+                    log('❌ No Service Worker registered', 'error');
+                    log('ℹ️  Click "Register Service Worker" first', 'info');
+                    return;
+                }
+
+                log('✅ Service Worker found!', 'success');
+                log(`📍 Scope: ${registration.scope}`, 'info');
+                
+                if (registration.installing) {
+                    log('⏳ Status: INSTALLING', 'warning');
+                } else if (registration.waiting) {
+                    log('⏸️  Status: WAITING', 'warning');
+                } else if (registration.active) {
+                    log('✅ Status: ACTIVE & READY!', 'success');
+                    log('🎉 PWA install should now work!', 'success');
+                }
+
+                // Check controller
+                if (navigator.serviceWorker.controller) {
+                    log('✅ Page is controlled by Service Worker', 'success');
+                } else {
+                    log('⚠️  Page not yet controlled (reload might help)', 'warning');
+                }
+
+            } catch (error) {
+                log(`❌ Error checking status: ${error.message}`, 'error');
+            }
+        }
+
+        let deferredPrompt;
+
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            log('✅ Install prompt is ready!', 'success');
+            log('📱 You can now install the app!', 'success');
+        });
+
+        function testInstall() {
+            log('🔍 Testing install capability...', 'info');
+            
+            if (deferredPrompt) {
+                log('✅ Install prompt available!', 'success');
+                log('📱 Triggering install...', 'info');
+                deferredPrompt.prompt();
+                
+                deferredPrompt.userChoice.then((choiceResult) => {
+                    if (choiceResult.outcome === 'accepted') {
+                        log('✅ User accepted the install!', 'success');
+                    } else {
+                        log('❌ User dismissed the install', 'warning');
+                    }
+                    deferredPrompt = null;
+                });
+            } else {
+                log('⚠️  Install prompt not available yet', 'warning');
+                log('ℹ️  Try:', 'info');
+                log('   1. Make sure Service Worker is active', 'info');
+                log('   2. Reload the page', 'info');
+                log('   3. Wait a few seconds', 'info');
+                log('   4. Check Chrome address bar for install icon', 'info');
+            }
+        }
+
+        // Auto-check on load
+        window.addEventListener('load', () => {
+            log('🚀 Page loaded - starting checks...', 'info');
+            log('', 'info');
+            
+            setTimeout(() => {
+                log('ℹ️  Click "Register Service Worker" to start', 'info');
+            }, 500);
+        });
+
+        // Listen for SW updates
+        navigator.serviceWorker.addEventListener('controllerchange', () => {
+            log('🔄 Service Worker controller changed', 'info');
+        });
+
+        // Check if already registered
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.getRegistration().then(reg => {
+                if (reg) {
+                    log('ℹ️  Service Worker already registered', 'info');
+                    log('ℹ️  Click "Check Status" to verify', 'info');
+                }
+            });
+        }
+    </script>
+</body>
+</html>

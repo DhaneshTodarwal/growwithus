@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PWA Install Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .test-card {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            margin: 20px 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .status {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+        .success { background: #10b981; color: white; }
+        .error { background: #ef4444; color: white; }
+        .warning { background: #f59e0b; color: white; }
+        button {
+            background: #6366f1;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 10px 5px;
+        }
+        button:hover { background: #4f46e5; }
+        .info { 
+            background: #eff6ff; 
+            border-left: 4px solid #3b82f6;
+            padding: 12px;
+            margin: 10px 0;
+        }
+        pre {
+            background: #1e293b;
+            color: #e2e8f0;
+            padding: 16px;
+            border-radius: 8px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>🔧 PWA Installation Checker</h1>
+    
+    <div class="test-card">
+        <h2>1. Browser Compatibility</h2>
+        <p>Chrome/Edge/Brave: <span id="browserCheck" class="status">Checking...</span></p>
+        <p id="browserInfo"></p>
+    </div>
+
+    <div class="test-card">
+        <h2>2. Manifest Status</h2>
+        <p>Manifest loaded: <span id="manifestCheck" class="status">Checking...</span></p>
+        <button onclick="checkManifest()">Check Manifest</button>
+        <pre id="manifestDetails"></pre>
+    </div>
+
+    <div class="test-card">
+        <h2>3. Service Worker Status</h2>
+        <p>Service Worker: <span id="swCheck" class="status">Checking...</span></p>
+        <button onclick="checkServiceWorker()">Check Service Worker</button>
+        <pre id="swDetails"></pre>
+    </div>
+
+    <div class="test-card">
+        <h2>4. Install Prompt</h2>
+        <p>Install available: <span id="installCheck" class="status">Waiting...</span></p>
+        <button onclick="triggerInstall()" id="installBtn" disabled>Install App</button>
+        <div class="info">
+            <strong>Note:</strong> The install prompt might take 5-10 seconds to appear. 
+            Or look for the install icon (⊕) in your Chrome address bar!
+        </div>
+    </div>
+
+    <div class="test-card">
+        <h2>5. PWA Status</h2>
+        <p>Running as PWA: <span id="pwaCheck" class="status">Checking...</span></p>
+    </div>
+
+    <div class="test-card">
+        <h2>✅ Quick Actions</h2>
+        <button onclick="window.location.href='http://localhost:3000'">Go to Main Site</button>
+        <button onclick="location.reload()">Reload Page</button>
+        <button onclick="openDevTools()">Open DevTools Guide</button>
+    </div>
+
+    <script>
+        let deferredPrompt;
+
+        // Check browser
+        function checkBrowser() {
+            const isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
+            const isEdge = /Edg/.test(navigator.userAgent);
+            const isBrave = navigator.brave !== undefined;
+            
+            const browserCheck = document.getElementById('browserCheck');
+            const browserInfo = document.getElementById('browserInfo');
+            
+            if (isChrome || isEdge || isBrave) {
+                browserCheck.className = 'status success';
+                browserCheck.textContent = '✅ Compatible';
+                browserInfo.textContent = `You're using a compatible browser: ${navigator.userAgent.split(' ').pop()}`;
+            } else {
+                browserCheck.className = 'status warning';
+                browserCheck.textContent = '⚠️ Use Chrome';
+                browserInfo.textContent = 'Please use Chrome, Edge, or Brave for best PWA support.';
+            }
+        }
+
+        // Check manifest
+        async function checkManifest() {
+            try {
+                const response = await fetch('/manifest.json');
+                const manifest = await response.json();
+                
+                const manifestCheck = document.getElementById('manifestCheck');
+                const manifestDetails = document.getElementById('manifestDetails');
+                
+                manifestCheck.className = 'status success';
+                manifestCheck.textContent = '✅ Loaded';
+                manifestDetails.textContent = JSON.stringify(manifest, null, 2);
+            } catch (error) {
+                const manifestCheck = document.getElementById('manifestCheck');
+                const manifestDetails = document.getElementById('manifestDetails');
+                
+                manifestCheck.className = 'status error';
+                manifestCheck.textContent = '❌ Failed';
+                manifestDetails.textContent = 'Error: ' + error.message;
+            }
+        }
+
+        // Check service worker
+        async function checkServiceWorker() {
+            const swCheck = document.getElementById('swCheck');
+            const swDetails = document.getElementById('swDetails');
+            
+            if ('serviceWorker' in navigator) {
+                try {
+                    const registration = await navigator.serviceWorker.getRegistration();
+                    if (registration) {
+                        swCheck.className = 'status success';
+                        swCheck.textContent = '✅ Active';
+                        swDetails.textContent = `Scope: ${registration.scope}\nState: ${registration.active?.state || 'installing'}`;
+                    } else {
+                        swCheck.className = 'status warning';
+                        swCheck.textContent = '⚠️ Not Registered';
+                        swDetails.textContent = 'Service worker not yet registered. Reload the page.';
+                    }
+                } catch (error) {
+                    swCheck.className = 'status error';
+                    swCheck.textContent = '❌ Error';
+                    swDetails.textContent = error.message;
+                }
+            } else {
+                swCheck.className = 'status error';
+                swCheck.textContent = '❌ Not Supported';
+                swDetails.textContent = 'Service workers not supported in this browser.';
+            }
+        }
+
+        // Listen for install prompt
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            
+            const installCheck = document.getElementById('installCheck');
+            const installBtn = document.getElementById('installBtn');
+            
+            installCheck.className = 'status success';
+            installCheck.textContent = '✅ Ready';
+            installBtn.disabled = false;
+            
+            console.log('✅ Install prompt captured!');
+        });
+
+        // Trigger install
+        async function triggerInstall() {
+            if (!deferredPrompt) {
+                alert('Install prompt not available. Try:\n1. Refreshing the page\n2. Looking for install icon in address bar\n3. Opening in Chrome/Edge');
+                return;
+            }
+
+            deferredPrompt.prompt();
+            const { outcome } = await deferredPrompt.userChoice;
+            
+            console.log(`User ${outcome} the install prompt`);
+            deferredPrompt = null;
+            
+            if (outcome === 'accepted') {
+                alert('🎉 App installed! Look for it in your applications.');
+            }
+        }
+
+        // Check if running as PWA
+        function checkPWA() {
+            const pwaCheck = document.getElementById('pwaCheck');
+            const isPWA = window.matchMedia('(display-mode: standalone)').matches || 
+                          window.navigator.standalone === true;
+            
+            if (isPWA) {
+                pwaCheck.className = 'status success';
+                pwaCheck.textContent = '✅ Yes';
+            } else {
+                pwaCheck.className = 'status warning';
+                pwaCheck.textContent = '⚠️ No (Browser)';
+            }
+        }
+
+        // Open DevTools guide
+        function openDevTools() {
+            alert(`📊 DevTools Guide:\n\n1. Press F12 to open DevTools\n2. Go to "Application" tab\n3. Check:\n   - Manifest (left sidebar)\n   - Service Workers\n   - Storage\n\nThis will show you all PWA details!`);
+        }
+
+        // Run checks on load
+        window.addEventListener('load', () => {
+            checkBrowser();
+            checkManifest();
+            checkServiceWorker();
+            checkPWA();
+            
+            // Set install check to waiting
+            setTimeout(() => {
+                const installCheck = document.getElementById('installCheck');
+                if (installCheck.textContent === 'Waiting...') {
+                    installCheck.className = 'status warning';
+                    installCheck.textContent = '⚠️ Not Available';
+                }
+            }, 10000); // Wait 10 seconds
+        });
+
+        // Check for app installed
+        window.addEventListener('appinstalled', () => {
+            console.log('✅ PWA was installed');
+            alert('🎉 App installed successfully!\n\nLook for "Grow-Withus" in your applications.');
+        });
+    </script>
+</body>
+</html>

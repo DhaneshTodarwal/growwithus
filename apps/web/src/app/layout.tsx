@@ -6,6 +6,8 @@ import CookieBanner from '../components/CookieBanner'
 import SkipLink from '../components/SkipLink'
 import SmoothScroll from '../components/SmoothScroll'
 import WhatsAppButton from '../components/WhatsAppButton'
+import SplashScreen from '../components/SplashScreen'
+import PWAInstallPrompt from '../components/PWAInstallPrompt'
 import { Inter } from 'next/font/google'
 import GoogleAnalytics from '../components/GoogleAnalytics'
 import { siteConfig } from '../config/site'
@@ -64,12 +66,17 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
         <link rel="icon" href="/favicon.ico" />
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+        <link rel="manifest" href="/manifest.json" />
         <link rel="manifest" href="/site.webmanifest" />
-        <meta name="theme-color" content="#0A0A0A" />
+        <meta name="theme-color" content="#6366f1" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+        <meta name="apple-mobile-web-app-title" content="Grow-Withus" />
         {/* Google Search Console Verification */}
         <meta name="google-site-verification" content="uQzIZuW7yQEoraQ5-l0v-kSjrIYXbqEj8RVsSfrUrcg" />
       </head>
       <body className="min-h-screen flex flex-col bg-white text-gray-900 dark:bg-black dark:text-gray-100">
+        <SplashScreen />
         <SmoothScroll />
         <Suspense>
           <GoogleAnalytics />
@@ -84,6 +91,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Footer />
         <CookieBanner />
         <WhatsAppButton position="floating" />
+        <PWAInstallPrompt />
         
         {/* Structured Data for SEO - Multiple schemas for better coverage */}
         <script 

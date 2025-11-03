@@ -1,5 +1,5 @@
 'use client'
-// Last updated: 2025-11-02 - Removed 2019, 150+, 6 years references
+// BUILD: Nov 3, 2025 - Updated stats to remove inconsistent dates
 import { siteConfig } from '../../config/site'
 import Image from 'next/image'
 import FoundersShowcase from '../../components/FoundersShowcase'

@@ -31,6 +31,9 @@ export const metadata = {
   keywords: ['web development', 'AI solutions', 'custom software', 'mobile apps', 'SEO services', 'digital transformation'],
   creator: siteConfig.name,
   publisher: siteConfig.name,
+  verification: {
+    google: 'c-3ac4T_D-6eQFAZxDi7eEGddaGLqULc7mmX2CmG7B0',
+  },
   icons: {
     icon: '/images/logo.jpeg',
     shortcut: '/images/logo.jpeg',

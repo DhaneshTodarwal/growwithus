@@ -25,6 +25,18 @@ export const metadata = {
   description: siteConfig.description,
   metadataBase: new URL(siteConfig.url),
   robots: { index: true, follow: true },
+  applicationName: siteConfig.name,
+  authors: [{ name: siteConfig.name }],
+  generator: 'Next.js',
+  keywords: ['web development', 'AI solutions', 'custom software', 'mobile apps', 'SEO services', 'digital transformation'],
+  creator: siteConfig.name,
+  publisher: siteConfig.name,
+  icons: {
+    icon: '/images/logo.jpeg',
+    shortcut: '/images/logo.jpeg',
+    apple: '/images/logo.jpeg',
+  },
+  manifest: '/manifest.json',
   openGraph: {
     title: `${siteConfig.name} — ${siteConfig.tagline}`,
     description: 'Premium digital products and AI automation, delivered.',
